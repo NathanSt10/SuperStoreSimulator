@@ -8,3 +8,11 @@ exports.loginWelcomeGet = asyncHandler(async (req, res) => {
     users: users,
   });
 });
+
+exports.officeWelcomeGet = asyncHandler(async (req, res) => {
+  const users = await User.findAll();
+  res.render("office", {
+    title: "SuperStore",
+    users: users,
+  });
+});

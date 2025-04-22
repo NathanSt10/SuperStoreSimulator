@@ -82,3 +82,21 @@ body {
   button:hover {
     filter: brightness(1.1);
   }
+
+  .title-bar-big {
+    background-color: #000080;
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: left;
+    font-size: 20px;
+  }
+
+  .window-big {
+    background-color: #dcdcdc;
+    border: 2px solid black;
+    width: 100%;
+    padding: 20;
+    height: 100%
+  }
