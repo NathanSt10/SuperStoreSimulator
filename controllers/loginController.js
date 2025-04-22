@@ -3,7 +3,7 @@ const User = require("../models/usersModel");
 
 exports.loginWelcomeGet = asyncHandler(async (req, res) => {
   const users = await User.findAll();
-  res.render("index", {
+  res.render("login", {
     title: "SuperStore",
     users: users,
   });
