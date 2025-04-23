@@ -1,9 +1,9 @@
 const asyncHandler = require("express-async-handler");
-const User = require("../models/usersModel");
+const User = require("../../models/usersModel");
 
-exports.loginWelcomeGet = asyncHandler(async (req, res) => {
+exports.getLoginPage = asyncHandler(async (req, res) => {
   const users = await User.findAll();
-  res.render("login", {
+  res.render("auth/login", {
     title: "SuperStore",
     users: users,
   });

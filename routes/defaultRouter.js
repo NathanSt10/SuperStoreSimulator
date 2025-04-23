@@ -5,4 +5,5 @@ const defaultRouter = Router();
 
 defaultRouter.get("/", loginController.loginWelcomeGet);
 
+
 module.exports = defaultRouter;
