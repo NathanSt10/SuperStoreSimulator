@@ -1,17 +1,23 @@
 const express = require("express");
 const server = express();
 const path = require("node:path");
-
-const defaultRouter = require("./routes/defaultRouter");
+const loginRouter = require("./routes/auth/loginRouter");
+const registerRouter = require("./routes/auth/registerRouter")
 
 // Middleware
 server.use(express.static(path.join(__dirname, "public"))); // Serves static files in public (.html, .css)
 server.set("views", path.join(__dirname, "views")); // Serves dynamic files in views (.ejs)
 server.set("view engine", "ejs"); // Tells server view's templates are .ejs
-server.use(express.urlencoded({ extended: true }));
+server.use(express.urlencoded({ extended: true })); // parses form data
 
 // Routes
-server.use("/", defaultRouter);
+server.use("/login", loginRouter);
+server.use("/register", registerRouter)
+
+// Redirect root to login
+server.get("/", (req, res) => {
+  res.redirect("/login");
+});
 
 // Error handling
 server.use((err, req, res, next) => {
