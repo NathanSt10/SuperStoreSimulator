@@ -10,6 +10,8 @@ server.use(express.static(path.join(__dirname, "public"))); // Serves static fil
 server.set("views", path.join(__dirname, "views")); // Serves dynamic files in views (.ejs)
 server.set("view engine", "ejs"); // Tells server view's templates are .ejs
 server.use(express.urlencoded({ extended: true })); // parses form data
+const methodOverride = require('method-override');
+server.use(methodOverride('_method'));
 
 // Routes
 server.use("/login", loginRouter);
@@ -20,6 +22,7 @@ server.use("/office", officeRouter);
 server.get("/", (req, res) => {
   res.redirect("/login");
 });
+
 
 // Error handling
 server.use((err, req, res, next) => {
