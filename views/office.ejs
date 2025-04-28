@@ -26,10 +26,10 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <ul>
-                  <% if (users) { %>                 
-                    <% users.forEach(function(user) { %>
-                      <li><%= user.username %></li>
-                    <% }); %>
+                  <% if (members) { %>                 
+                    <% members.forEach(member => { %>
+                      <li><%= member.first_name %></li>
+                      <% }); %>
                   <% } else { %>  
                     <li>No users found</li>
                   <% } %>
