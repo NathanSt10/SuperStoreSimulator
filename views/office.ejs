@@ -25,7 +25,15 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Some text in the Modal..</p>
+                <ul>
+                  <% if (users) { %>                 
+                    <% users.forEach(function(user) { %>
+                      <li><%= user.username %></li>
+                    <% }); %>
+                  <% } else { %>  
+                    <li>No users found</li>
+                  <% } %>
+                </ul>
             </div>
         </div>
         <a href="/"><button type="submit">Go Back</button></a>
