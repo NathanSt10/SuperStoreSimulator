@@ -28,7 +28,7 @@
                 <ul>
                   <% if (members) { %>                 
                     <% members.forEach(member => { %>
-                      <li><%= member.first_name %></li>
+                      <li>first name: <%= member.first_name %> last name: <%= member.last_name %></li>
                       <% }); %>
                   <% } else { %>  
                     <li>No users found</li>
