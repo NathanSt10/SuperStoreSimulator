@@ -1,7 +1,7 @@
 use super_store_sim_db;
 insert into department (`name`) 
 values ('Produce'), ('Dairy'),('Electronics'),('Frozen'),('Clothes'), ('Bakery'), ('Beauty'),
-('Pharmacy'), ('Cleaning'), ('Meat'),('Toys'),('Automotive');
+('Pharmacy'), ('Cleaning'), ('Deli'),('Toys'),('Automotive');
 insert into membership (`membership_tier`, `yearly_fee`)
 values ('Basic', 50), ('Gold', 100), ('Platinum', 150);
 INSERT INTO employee (first_name, last_name, department_id, email, phone_number, wage, years_worked)
