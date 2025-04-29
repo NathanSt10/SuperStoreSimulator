@@ -11,7 +11,7 @@ exports.officeWelcomeGet = asyncHandler(async (req, res) => {
 
 // Update a member
 //.put('/members/:id', (req, res) => {
-exports.officeUpdate = asyncHandler(async (req, res) => {
+  exports.officeUpdate = asyncHandler(async (req, res) => {
     const { id } = req.params;
     let { first_name, last_name } = req.body;
     const [[member]] = await Member.getMember(id);
