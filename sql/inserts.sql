@@ -74,3 +74,7 @@ VALUES
 ('FunZone Toys', 'https://www.funzonetoys.com'),
 ('AutoWorks Parts', 'https://www.autoworksparts.com'),
 ('DriveMaster Auto Supplies', 'https://www.drivemasterautosupplies.com');
+insert into members (first_name, last_name, email, phone_number, membership)
+values ('Andew', 'Metz', 'email@email.com', '111-111-111', 1),
+('John', 'Smith', 'email@email.org', '222-222-2222', 2),
+('Joe', 'Random', 'email2@notemail.com', '123-123-1234', 3);
