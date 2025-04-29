@@ -101,7 +101,19 @@ end$$
 DELIMITER ;
 
 DELIMITER $$
-# create procedure new_member_user
+create procedure new_member_user
+(in p_first varchar(45), in p_last varchar(45), in p_email varchar(320), in p_num varchar(45),
+in p_type int, in p_user varchar(20), in p_pass varchar(20))
+begin 
+	declare v_member_id int;
+	insert into members (first_name, last_name, email, phone_number, membership)
+    values (p_first, p_last, p_email, p_num, p_type);
+    set v_member_id = last_insert_id();
+    insert into `user` (username, `password`, member_id, admin_rights)
+    values (p_user, p_pass, v_member_id, 0);
+end$$
+DELIMITER ;
+    
 
 
 
