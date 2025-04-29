@@ -20,6 +20,12 @@ class Members {
     return result.insertId;
   }
 
+  static async deleteMember(id) {
+    const query = "DELETE from `member` WHERE id = ?";
+    const [result] = await db.query(query, [id]);
+    return result.insertId;
+  }
+
   static async getMember(id) {
     const query = "SELECT first_name, last_name FROM member WHERE id = ?";
     const [result] = await db.query(query, [id]);

@@ -11,19 +11,26 @@ exports.officeWelcomeGet = asyncHandler(async (req, res) => {
 
 // Update a member
 //.put('/members/:id', (req, res) => {
-  exports.officeUpdate = asyncHandler(async (req, res) => {
-    const { id } = req.params;
-    let { first_name, last_name } = req.body;
-    const [[member]] = await Member.getMember(id);
-    console.log("member: ", member)
-    // console.log("Last", member[1])
-    if(first_name == "") {
-        first_name = member.first_name
-    }
-    if(last_name == "") {
-        last_name = member.last_name
-    }
-    await Member.updateMember(id, first_name, last_name);
-    const members = await Member.findAll();
-    res.redirect("/office");
-  });
+exports.officeUpdate = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  let { first_name, last_name } = req.body;
+  const [[member]] = await Member.getMember(id);
+  //console.log("member: ", member)
+  // console.log("Last", member[1])
+  if(first_name == "") {
+      first_name = member.first_name
+  }
+  if(last_name == "") {
+      last_name = member.last_name
+  }
+  await Member.updateMember(id, first_name, last_name);
+  const members = await Member.findAll();
+  res.redirect("/office");
+});
+
+exports.officeDelete = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  await Member.deleteMember(id);
+  const members = await Member.findAll();
+  res.redirect("/office");
+});
