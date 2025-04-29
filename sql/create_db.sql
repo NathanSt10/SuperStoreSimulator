@@ -253,7 +253,7 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 -- Table `super_store_sim_db`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `super_store_sim_db`.`user` (
+CREATE TABLE IF NOT EXISTS `super_store_sim_db`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(20) NOT NULL,
   `password` VARCHAR(20) NOT NULL,
@@ -268,7 +268,6 @@ CREATE TABLE IF NOT EXISTS `super_store_sim_db`.`user` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

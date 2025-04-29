@@ -109,7 +109,7 @@ begin
 	insert into members (first_name, last_name, email, phone_number, membership)
     values (p_first, p_last, p_email, p_num, p_type);
     set v_member_id = last_insert_id();
-    insert into `user` (username, `password`, member_id, admin_rights)
+    insert into `users` (username, `password`, member_id, admin_rights)
     values (p_user, p_pass, v_member_id, 0);
 end$$
 DELIMITER ;

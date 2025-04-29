@@ -70,7 +70,7 @@ DELIMITER ;
 DELIMITER $$
 create trigger new_member_to_user after insert on `members` for each row
 begin
-	insert into `user` (username,`password`, member_id, admin_rights)
+	insert into `users` (username,`password`, member_id, admin_rights)
     values (concat(lower(left(new.first_name,3)), lower(left(new.last_name, 3)), new.id), '0', new.id, 0);
 end$$
 DELIMITER ;
