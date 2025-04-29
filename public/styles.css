@@ -116,43 +116,126 @@ button:hover {
   }
 
   /* The Modal (background) */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
-  
-    /* NEW: Flexbox for centering */
-    align-items: center;
-    justify-content: center;
-  }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+}
 
-/* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  background-color: #c0c0c0;
+  border: 2px solid black;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 700px;
+  max-width: 90%;
+  max-height: 80vh; /* Viewport-based max height */
+  overflow-y: auto; /* Enables vertical scrolling */
+  display: flex;
+  flex-direction: column;
 }
 
-/* The Close Button */
+/* Close Button */
 .close {
-  color: #aaa;
+  color: black;
   float: right;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
+  border: 2px outset #000;
+  padding: 0 8px;
+  background-color: #dcdcdc;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
+.close:hover {
+  background-color: #fff;
+}
+
+/* Headings */
+.modal-content h2, .modal-content h3 {
+  margin: 10px 0;
+  color: navy;
+  font-size: 22px;
+  text-align: center;
+  border-bottom: 2px ridge black;
+  padding-bottom: 4px;
+}
+
+/* Member list styling */
+.modal-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.modal-content li {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #dcdcdc;
+  border: 2px inset #000;
+}
+
+/* Form inside list */
+.modal-content form {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+
+.modal-content input[type="text"] {
+  font-family: inherit;
+  padding: 4px;
+  border: 2px inset #000;
+  background-color: white;
+  width: 130px;
+}
+
+.modal-content button {
+  background-color: #00ffff;
+  border: 2px outset #000;
+  font-size: 14px;
+  padding: 4px 10px;
   cursor: pointer;
+  font-weight: bold;
+  color: black;
+}
+
+.modal-content button:hover {
+  filter: brightness(1.1);
+}
+
+.modal-content .create-section {
+  margin-top: 20px;
+  border-top: 2px ridge black;
+  padding-top: 10px;
+}
+
+.modal-content .create-section form {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #dcdcdc;
+  border: 2px inset #000;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #808080;
+  border: 2px outset #000;
 }
 
 .modal.show {
