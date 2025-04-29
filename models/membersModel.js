@@ -14,9 +14,9 @@ class Members {
     return result.insertId;
   }
 
-  static async updateMember(id, first_name, last_name) {
-    const query = "UPDATE members SET first_name = ?, last_name = ? WHERE id = ?";
-    const [result] = await db.query(query, [first_name, last_name, id]);
+  static async updateMember(id, email, phone_number) {
+    const query = "UPDATE members SET email = ?, phone_number = ? WHERE id = ?";
+    const [result] = await db.query(query, [email, phone_number, id]);
     return result.insertId;
   }
 

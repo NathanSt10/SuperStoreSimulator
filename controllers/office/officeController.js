@@ -13,17 +13,17 @@ exports.officeWelcomeGet = asyncHandler(async (req, res) => {
 //.put('/members/:id', (req, res) => {
 exports.officeUpdate = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  let { first_name, last_name } = req.body;
+  let { email, phone_number } = req.body;
   const [[member]] = await Member.getMember(id);
   //console.log("member: ", member)
   // console.log("Last", member[1])
-  if(first_name == "") {
-      first_name = member.first_name
+  if(email == "") {
+      email = member.email
   }
-  if(last_name == "") {
-      last_name = member.last_name
+  if(phone_number == "") {
+    phone_number = member.phone_number
   }
-  await Member.updateMember(id, first_name, last_name);
+  await Member.updateMember(id, email, phone_number);
   const members = await Member.findAll();
   res.redirect("/office");
 });
