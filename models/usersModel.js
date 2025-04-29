@@ -2,14 +2,14 @@ const db = require("./db");
 
 class Users {
   static async getUser(username) {
-    const query = "SELECT password FROM user WHERE username = ?";
+    const query = "SELECT * FROM users WHERE username = ?";
     const result = await db.query(query, [username]);
     console.log("result: ", result);
-    return [result];
+    return result;
   }
 
   static async setPassword(memberID, password) {
-    const query = "UPDATE user SET password = ? WHERE member_id = ?";
+    const query = "UPDATE users SET password = ? WHERE member_id = ?";
     const result = await db.query(query, [password, memberID]);
     console.log("result: ", result);
     return result;

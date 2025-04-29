@@ -7,6 +7,7 @@ exports.getLoginPage = asyncHandler(async (req, res) => {
 
 exports.authenticateUser = asyncHandler(async (req, res) => {
   const { username } = req.body;
-  await User.getUser(username);
+  const [user] = await User.getUser(username);
+  console.log("user: ", user.username);
   res.render("aisles/entrance");
 });
