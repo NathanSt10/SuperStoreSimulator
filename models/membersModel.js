@@ -29,7 +29,7 @@ class Members {
   static async getMember(id) {
     const query = "SELECT first_name, last_name FROM members WHERE id = ?";
     const [result] = await db.query(query, [id]);
-    console.log("result: ", result);
+    //console.log("result: ", result);
     return [result];
   }
 
