@@ -2,8 +2,10 @@ const express = require("express");
 const server = express();
 const path = require("node:path");
 const loginRouter = require("./routes/auth/loginRouter");
-const registerRouter = require("./routes/auth/registerRouter")
-const officeRouter = require("./routes/office/officeRouter")
+const registerRouter = require("./routes/auth/registerRouter");
+const officeRouter = require("./routes/office/officeRouter");
+const entranceRouter = require("./routes/aisles/entranceRouter");
+
 
 // Middleware
 server.use(express.static(path.join(__dirname, "public"))); // Serves static files in public (.html, .css)
@@ -17,6 +19,7 @@ server.use(express.urlencoded({ extended: true })); // parses form data
 server.use("/login", loginRouter);
 server.use("/register", registerRouter);
 server.use("/office", officeRouter);
+server.use("/entrance", entranceRouter);
 
 // Redirect root to login
 server.get("/", (req, res) => {
