@@ -5,11 +5,12 @@ class Members {
     const [rows] = await db.query("SELECT * FROM member");
     return rows;
   }
+//  const query = "CALL new_member_user (INSERT INTO member (first_name, last_name, email, phone_number, membership) VALUES (?, ?, ?, ?, ?)";
 
-  static async addMember(first_name, last_name, email, phone_number, membership_tier) {
-    const points = 350;
-    const query = "INSERT INTO member (first_name, last_name, email, phone_number, membership, points) VALUES (?, ?, ?, ?, ?, ?)";
-    const [result] = await db.query(query, [first_name, last_name, email, phone_number, membership_tier, points]);
+  static async addMemberProcedure(first_name, last_name, email, phone_number, membership_tier, username, password) {
+    const query = "CALL new_member_user (?, ?, ?, ?, ?, ?, ?)";
+    const [result] = await db.query(query, [first_name, last_name, email, phone_number, membership_tier, username, password]);
+    console.log(result);
     return result.insertId;
   }
 
