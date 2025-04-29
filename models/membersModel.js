@@ -7,9 +7,9 @@ class Members {
   }
 //  const query = "CALL new_member_user (INSERT INTO member (first_name, last_name, email, phone_number, membership) VALUES (?, ?, ?, ?, ?)";
 
-  static async addMemberProcedure(first_name, last_name, email, phone_number, membership_tier, username, password) {
-    const query = "CALL new_member_user (?, ?, ?, ?, ?, ?, ?)";
-    const [result] = await db.query(query, [first_name, last_name, email, phone_number, membership_tier, username, password]);
+  static async addMemberProcedure(first_name, last_name, email, phone_number, membership_tier) {
+    const query = "INSERT INTO members (first_name, last_name, email, phone_number, membership) VALUES (?, ?, ?, ?, ?)";
+    const [result] = await db.query(query, [first_name, last_name, email, phone_number, membership_tier]);
     console.log(result);
     return result.insertId;
   }
