@@ -3,6 +3,6 @@ const profileController = require("../../controllers/auth/profileController");
 
 const profileRouter = Router();
 
-profileRouter.get("/", profileController.getProfilePage);
+profileRouter.get("/:id", profileController.getProfilePage);
 
 module.exports = profileRouter;

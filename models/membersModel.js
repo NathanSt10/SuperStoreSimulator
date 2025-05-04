@@ -27,7 +27,7 @@ class Members {
   }
 
   static async getMember(id) {
-    const query = "SELECT email, phone_number FROM members WHERE id = ?";
+    const query = "SELECT * FROM members WHERE id = ?";
     const [result] = await db.query(query, [id]);
     return [result];
   }
