@@ -31,7 +31,6 @@ class Members {
     const [result] = await db.query(query, [id]);
     return [result];
   }
-
 }
 
 module.exports = Members;
