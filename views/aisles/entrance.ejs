@@ -36,8 +36,8 @@
               <% produce.forEach(product => { %>
                 <tr>
                   <td><%= product.name %></td>
-                  <td>$<%= product.price.toFixed(2) %></td>
-                  <td><%= product.quantity > 0 ? "In Stock" : "Out of Stock" %></td>
+                  <td>$<%= product.price %></td>
+                  <td><%= product.quantity %></td>
                 </tr>
               <% }); %>
             <% } else { %>

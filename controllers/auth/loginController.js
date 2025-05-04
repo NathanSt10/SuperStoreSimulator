@@ -10,7 +10,7 @@ exports.authenticateUser = asyncHandler(async (req, res) => {
   const [[user]] = await User.getUser(username);
 
   if (user && password === user.password) {
-    res.render("aisles/entrance");
+    res.redirect("entrance");
   } else {
     res.render("auth/login", { invalidLogin: true });
   }
