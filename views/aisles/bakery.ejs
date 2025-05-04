@@ -51,10 +51,10 @@
     </div>
     
     <div class="content">
-      <h1>WELCOME TO THE SUPERMARKET</h1>
+      
 
       
-      <a href="/entrance"><button class="create-btn" type="submit">Produce</button></a>
+      <a href="/entrance/:id"><button class="create-btn" type="submit">Produce</button></a>
       <a href="/deli"><button class="create-btn" type="submit">Deli</button></a>
       
 
@@ -66,6 +66,8 @@
             <th>Item</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Brand</th>
+            <th>Category</th>
           </tr>
         </thead>
         <tbody>
@@ -75,6 +77,8 @@
                   <td><%= product.name %></td>
                   <td>$<%= product.price %></td>
                   <td><%= product.quantity %></td>
+                  <td><%= product.brand %></td>
+                  <td><%= product.category %></td>
                 </tr>
               <% }); %>
             <% } else { %>
@@ -83,7 +87,7 @@
           </tbody>
       </table>
 
-      <a href="/pharmacy"><button class="create-btn" type="submit">Pharmacy</button></a>
+      <a href="/pharmacy"><button>Pharmacy</button></a>
     </div>
   </div>
   <script src="modal.js" defer></script>

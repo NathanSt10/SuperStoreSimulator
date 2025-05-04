@@ -8,6 +8,7 @@ const entranceRouter = require("./routes/aisles/entranceRouter");
 const checkoutRouter = require("./routes/checkout/checkoutRouter");
 const profileRouter = require("./routes/auth/profileRouter");
 const bakeryRouter = require("./routes/aisles/bakeryRouter");
+const deliRouter = require("./routes/aisles/deliRouter");
 
 
 // Middleware
@@ -26,6 +27,7 @@ server.use("/entrance", entranceRouter);
 server.use("/checkout", checkoutRouter);
 server.use("/office", officeRouter);
 server.use("/bakery", bakeryRouter);
+server.use("/deli", deliRouter);
 
 // Redirect root to login
 server.get("/", (req, res) => {
