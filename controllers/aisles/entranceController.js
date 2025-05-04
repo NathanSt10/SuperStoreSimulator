@@ -10,4 +10,4 @@ exports.entranceGet = asyncHandler(async (req, res) => {
       produce: produce,
       cart: cart
     });
-  });
+});
