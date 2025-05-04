@@ -11,7 +11,6 @@ class Users {
   static async setPassword(memberID, password) {
     const query = "UPDATE users SET password = ? WHERE member_id = ?";
     const result = await db.query(query, [password, memberID]);
-    console.log("result: ", result);
     return result;
   }
 }
