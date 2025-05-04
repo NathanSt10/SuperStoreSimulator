@@ -26,5 +26,9 @@ select row_number() over (partition by o.member_id order by o.id) as member_orde
 od.price, member_id from orderdetails od join orders o on od.order_id = o.id 
 join product p on od.product_id = p.id;
 
+create view checkout as
+select member_id, p.`name` as product, bc.product_quantity, (p.price *bc.product_quantity) as price
+from bagcontents bc join product p on bc.product_id = p.id;
+
 
 
