@@ -621,4 +621,9 @@ values ('Watermelon', 1, 1, 6.99, 100, 2), ('Fuji Apple (lbs)',1,1,1.99,100,2),
 ('Chess Board',31,11,24.99,100,22),('Action Guy',32,11,15.99,100,23),('Barbie',32,11,15.99,100,23),
 ('Pickleball Set',33,11,19.99,100,23),('Bicycle',33,11,149.99,100,23),('Basketball',33,11,24.99,100,22),
 ('Dumbell Set',33,11,99.99,100,22),('Tires (Full set)',34,12,900.00,100,25),('Car Battery',35,12,200.00,100,24),
-('Car Service',36,12,80.00,100,1);     
+('Car Service',36,12,80.00,100,1);   
+
+ALTER TABLE bagcontents
+DROP INDEX product_id_UNIQUE;
+ALTER TABLE bagcontents
+ADD UNIQUE KEY uniq_member_product (member_id, product_id);

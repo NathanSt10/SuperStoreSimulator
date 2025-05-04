@@ -17,7 +17,7 @@
         <button id="memberButton" class="icon-button">
           <img src="/cart_white.png" alt="Cart" style="width: 25px; height: 25px;">
         </button>
-        <a href="/profile">
+        <a href="/acccount">
           <button class="icon-button">
             <img src="/human_white.png" alt="Account" style="width: 25px; height: 25px;">
           </button>
@@ -54,11 +54,11 @@
       <h1>WELCOME TO THE SUPERMARKET</h1>
 
       
-      <a href="/checkout"><button class="create-btn" type="submit">Proceed to Checkout</button></a>
-      <a href="/office"><button class="create-btn" type="submit">Go to Office</button></a>
-      <a href="/bakery"><button class="create-btn">Bakery</button></a>
+      <a href="/entrance"><button class="create-btn" type="submit">Produce</button></a>
+      <a href="/deli"><button class="create-btn" type="submit">Deli</button></a>
+      
 
-      <h2>Produce Aisle</h2>
+      <h2>Bakery</h2>
       
       <table class="retro-table">
         <thead>
@@ -69,8 +69,8 @@
           </tr>
         </thead>
         <tbody>
-            <% if (produce && produce.length > 0) { %>
-              <% produce.forEach(product => { %>
+            <% if (bakery && bakery.length > 0) { %>
+              <% bakery.forEach(product => { %>
                 <tr>
                   <td><%= product.name %></td>
                   <td>$<%= product.price %></td>
@@ -78,12 +78,12 @@
                 </tr>
               <% }); %>
             <% } else { %>
-              <tr><td colspan="3">No produce available</td></tr>
+              <tr><td colspan="3">No Bakery available</td></tr>
             <% } %>
           </tbody>
       </table>
 
-      <a href="/"><button>Go Back</button></a>
+      <a href="/pharmacy"><button class="create-btn" type="submit">Pharmacy</button></a>
     </div>
   </div>
   <script src="modal.js" defer></script>
