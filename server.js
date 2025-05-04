@@ -5,6 +5,7 @@ const loginRouter = require("./routes/auth/loginRouter");
 const registerRouter = require("./routes/auth/registerRouter");
 const officeRouter = require("./routes/office/officeRouter");
 const entranceRouter = require("./routes/aisles/entranceRouter");
+const checkoutRouter = require("./routes/checkout/checkoutRouter");
 
 
 // Middleware
@@ -20,6 +21,7 @@ server.use("/login", loginRouter);
 server.use("/register", registerRouter);
 server.use("/office", officeRouter);
 server.use("/entrance", entranceRouter);
+server.use("/checkout", checkoutRouter);
 
 // Redirect root to login
 server.get("/", (req, res) => {

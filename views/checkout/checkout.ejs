@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Shopping Simulator</title>
+  <link rel="stylesheet" href="http://localhost:3000/styles.css">
+</head>
+<body>
+  <div class="window">
+    <div class="title-bar">
+      <span class="title">
+        <span class="s">S</span><span class="u">u</span><span class="p">p</span><span class="e">e</span><span class="r">r</span>
+        <span class="s">S</span><span class="u">h</span><span class="p">o</span><span class="e">p</span><span class="r">p</span><span class="s">i</span><span class="u">n</span><span class="p">g</span>
+        <span class="s">S</span><span class="u">i</span><span class="p">m</span><span class="e">u</span><span class="r">l</span><span class="s">a</span><span class="u">t</span><span class="p">o</span><span class="e">r</span>
+      </span>
+    </div>
+    
+    <div class="content">
+      <h1>Checkout</h1>
+
+      
+      <a href="/checkout"><button class="create-btn" type="submit">Proceed to Checkout</button></a>
+      <a href="/office"><button class="create-btn" type="submit">Go to Office</button></a>
+
+      <h2>Checkout</h2>
+      
+      <table class="retro-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% if (checkout && checkout.length > 0) { %>
+              <% checkout.forEach(item => { %>
+                <tr>
+                  <td><%= item.product %></td>
+                  <td><%= item.product_quantity %></td>
+                  <td>$<%= item.price %></td>
+                </tr>
+              <% }); %>
+            <% } else { %>
+              <tr><td colspan="3">Empty cart</td></tr>
+            <% } %>
+          </tbody>
+      </table>
+
+      <a href="/"><button>Go Back</button></a>
+    </div>
+  </div>
+</body>
+</html>
