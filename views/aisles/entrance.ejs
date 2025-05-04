@@ -66,6 +66,8 @@
             <th>Item</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Brand</th>
+            <th>Category</th>
           </tr>
         </thead>
         <tbody>
@@ -75,6 +77,8 @@
                   <td><%= product.name %></td>
                   <td>$<%= product.price %></td>
                   <td><%= product.quantity %></td>
+                  <td><%= product.brand %></td>
+                  <td><%= product.category %></td>
                 </tr>
               <% }); %>
             <% } else { %>
