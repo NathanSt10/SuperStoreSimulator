@@ -18,8 +18,9 @@ exports.officeUpdate = asyncHandler(async (req, res) => {
   //console.log("member: ", member)
   // console.log("Last", member[1])
   if(email == "") {
-      email = member.email
+    email = member.email
   }
+
   if(phone_number == "") {
     phone_number = member.phone_number
   }
