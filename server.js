@@ -6,6 +6,7 @@ const registerRouter = require("./routes/auth/registerRouter");
 const officeRouter = require("./routes/office/officeRouter");
 const entranceRouter = require("./routes/aisles/entranceRouter");
 const checkoutRouter = require("./routes/checkout/checkoutRouter");
+const profileRouter = require("./routes/auth/profileRouter");
 
 
 // Middleware
@@ -19,9 +20,11 @@ server.use(express.urlencoded({ extended: true })); // parses form data
 // Routes
 server.use("/login", loginRouter);
 server.use("/register", registerRouter);
-server.use("/office", officeRouter);
+server.use("/profile", profileRouter);
 server.use("/entrance", entranceRouter);
 server.use("/checkout", checkoutRouter);
+server.use("/office", officeRouter);
+
 
 // Redirect root to login
 server.get("/", (req, res) => {
