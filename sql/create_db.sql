@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `super_store_sim_db`.`product` (
     REFERENCES `super_store_sim_db`.`department` (`id`)
     ON DELETE RESTRICT,
   CONSTRAINT `sup_pro_idfk`
-    FOREIGN KEY (`category_id`)
+    FOREIGN KEY (`supplier_id`)
     REFERENCES `super_store_sim_db`.`supplier` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
