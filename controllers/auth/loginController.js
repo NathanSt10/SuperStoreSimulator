@@ -10,7 +10,8 @@ exports.authenticateUser = asyncHandler(async (req, res) => {
   const [[user]] = await User.getUser(username);
 
   if (user && password === user.password) {
-    res.redirect("entrance");
+    const [[memberid]] = await User.getMember(user.id);
+    res.redirect(`entrance/${memberid.member_id}`);
   } else {
     res.render("auth/login", { invalidLogin: true });
   }
