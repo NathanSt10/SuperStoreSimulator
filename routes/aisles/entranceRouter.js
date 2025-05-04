@@ -1,8 +1,8 @@
 const { Router } = require("express");
+const entranceController = require("../../controllers/aisles/entranceController");
 
 const entranceRouter = Router();
 
-entranceRouter.get("/", (req, res) => res.render("aisles/entrance"));
-
+entranceRouter.get("/", entranceController.entranceGet);
 
 module.exports = entranceRouter;

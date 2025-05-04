@@ -273,3 +273,31 @@ button:hover {
   box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
   border-radius: 2px;
 }
+
+.retro-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #dcdcdc;
+  border: 2px inset #000;
+}
+
+.retro-table th, .retro-table td {
+  border: 2px inset #000;
+  padding: 10px;
+  text-align: left;
+}
+
+.retro-table th {
+  background-color: #c0c0c0;
+  color: black;
+  font-weight: bold;
+}
+
+.retro-table tbody tr:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
+.retro-table tbody tr:nth-child(odd) {
+  background-color: #f0f0f0;
+}
