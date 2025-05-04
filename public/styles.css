@@ -18,6 +18,7 @@ background-color: #008080; /* Windows 95 teal */
 
 .title-bar {
   background-color: #000080;
+  justify-content: space-between; /* separates title and button */
   color: white;
   padding: 5px 10px;
   font-weight: bold;
@@ -25,6 +26,34 @@ background-color: #008080; /* Windows 95 teal */
   align-items: center;
   font-size: 20px;
 }
+
+/* Retro-style button to match the rest of the UI */
+.retro-btn {
+  background-color: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  padding: 4px 12px;
+  cursor: pointer;
+  color: #000;
+  text-transform: uppercase;
+  transition: transform 0.1s ease-in-out;
+}
+
+.retro-btn:hover {
+  background-color: #a9a9a9;
+}
+
+.retro-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.small-btn {
+  margin-left: auto;
+}
+
 
 .title .s { color: red; }
 .title .u { color: orange; }
@@ -272,4 +301,32 @@ button:hover {
   border: 1px solid #000;
   box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
   border-radius: 2px;
+}
+
+.retro-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #dcdcdc;
+  border: 2px inset #000;
+}
+
+.retro-table th, .retro-table td {
+  border: 2px inset #000;
+  padding: 10px;
+  text-align: left;
+}
+
+.retro-table th {
+  background-color: #c0c0c0;
+  color: black;
+  font-weight: bold;
+}
+
+.retro-table tbody tr:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
+.retro-table tbody tr:nth-child(odd) {
+  background-color: #f0f0f0;
 }
