@@ -330,3 +330,22 @@ button:hover {
 .retro-table tbody tr:nth-child(odd) {
   background-color: #f0f0f0;
 }
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.icon-button img {
+  display: block;
+}
+
+.icon-button-group {
+  display: flex;
+  gap: 8px; /* space between icons */
+  align-items: center;
+}
