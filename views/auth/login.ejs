@@ -40,6 +40,21 @@
     .popup-button:hover {
       background-color: #fff;
     }
+
+    .popup-welcome {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: #a9a9a9 !important;
+      border: 2px solid black;
+      box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
+      padding: 20px;
+      width: 300px;
+      z-index: 1000;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+    }
   </style>
   
   
@@ -68,6 +83,15 @@
     </div>
     <% } %>
 
+    <% if (showWelcome && registeredUsername) { %>
+      <div id="welcomePopup" class="popup-welcome">
+        <div class="popup-content">
+          Thank you for purchasing a membership! Your username is: <span class="b"><%= registeredUsername %></span> Remember this you'll need it to login!
+        </div>
+        <button id="closeWelcomePopupBtn" class="popup-button">OK</button>
+      </div>
+    <% } %>
+
     <div class="content">
       <h1>LOGIN</h1>
       <form action="/login" method="POST">
@@ -82,9 +106,27 @@
     </div>
   </div>
   <script>
-    document.getElementById('closePopupBtn').addEventListener('click', function() {
-      document.getElementById('errorPopup').style.display = 'none';
-    });
+    // Close login error popup
+    const errorBtn = document.getElementById('closePopupBtn');
+    if (errorBtn) {
+      errorBtn.addEventListener('click', function () {
+        const popup = document.getElementById('errorPopup');
+        if (popup) popup.style.display = 'none';
+      });
+    }
+  
+    // Close welcome popup
+    const welcomeBtn = document.getElementById('closeWelcomePopupBtn');
+    if (welcomeBtn) {
+      welcomeBtn.addEventListener('click', function () {
+        const popup = document.getElementById('welcomePopup');
+        if (popup) popup.style.display = 'none';
+      });
+    }
+
+    if (window.location.search.includes('registered=true')) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
   </script>
 </body>
 </html>
