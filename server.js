@@ -16,6 +16,7 @@ const clothesRouter = require("./routes/aisles/clothesRouter");
 const toysRouter = require("./routes/aisles/toysRouter");
 const electronicsRouter = require("./routes/aisles/electronicsRouter");
 const cleaningRouter = require("./routes/aisles/cleaningRouter");
+const pharmacyRouter = require("./routes/aisles/pharmacyRouter");
 
 
 // Middleware
@@ -42,6 +43,7 @@ server.use("/clothes", clothesRouter);
 server.use("/toys", toysRouter);
 server.use("/electronics", electronicsRouter);
 server.use("/cleaning", cleaningRouter);
+server.use("/pharmacy", pharmacyRouter);
 
 // Redirect root to login
 server.get("/", (req, res) => {
