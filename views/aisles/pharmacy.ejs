@@ -52,11 +52,11 @@
     
     <div class="content">
       
-      <a href="/frozen/<%= memberid%>"><button class="create-btn" type="submit">Frozen</button></a>
-      <a href="/toys/<%= memberid%>"><button class="create-btn" type="submit">Toys</button></a>
+      <a href="/cleaning/<%= memberid%>"><button class="create-btn" type="submit">Cleaning</button></a>
+      <a href="/beauty/<%= memberid%>"><button class="create-btn" type="submit">Beauty</button></a>
       
 
-      <h2>Clothes</h2>
+      <h2>Pharmacy</h2>
       
       <table class="retro-table">
         <thead>
@@ -69,8 +69,8 @@
           </tr>
         </thead>
         <tbody>
-            <% if (clothes && clothes.length > 0) { %>
-              <% clothes.forEach(product => { %>
+            <% if (pharmacy && pharmacy.length > 0) { %>
+              <% pharmacy.forEach(product => { %>
                 <tr>
                   <td><%= product.name %></td>
                   <td>$<%= product.price %></td>
@@ -80,10 +80,12 @@
                 </tr>
               <% }); %>
             <% } else { %>
-              <tr><td colspan="3">No Clothes available</td></tr>
+              <tr><td colspan="3">No Pharmacy available</td></tr>
             <% } %>
           </tbody>
       </table>
+      <a href="/Bakery/<%= memberid%>"><button>Bakery</button></a>
+      <a href="/deli/<%= memberid%>"><button>Deli</button></a>
     </div>
   </div>
   <script src="/modal.js" defer></script>

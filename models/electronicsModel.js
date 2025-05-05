@@ -1,8 +1,8 @@
 const db = require("./db");
 
-class Frozen {
+class Electronics {
   static async findAll() {
-    const [rows] = await db.query("select `name`, price, quantity, brand, category from aisle_view where department = 4");
+    const [rows] = await db.query("select `name`, price, quantity, brand, category from aisle_view where department = 3");
     return rows;
   }
 
@@ -15,4 +15,4 @@ class Frozen {
 
 }
 
-module.exports = Frozen;
+module.exports = Electronics;

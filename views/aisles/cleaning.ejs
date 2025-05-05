@@ -17,7 +17,7 @@
         <button id="memberButton" class="icon-button">
           <img src="/cart_white.png" alt="Cart" style="width: 25px; height: 25px;">
         </button>
-        <a href="/profile/<%= memberid%>">
+        <a href="/profile/<%= memberid%>">  
           <button class="icon-button">
             <img src="/human_white.png" alt="Account" style="width: 25px; height: 25px;">
           </button>
@@ -52,11 +52,11 @@
     
     <div class="content">
       
-      <a href="/frozen/<%= memberid%>"><button class="create-btn" type="submit">Frozen</button></a>
-      <a href="/toys/<%= memberid%>"><button class="create-btn" type="submit">Toys</button></a>
+      <a href="/electronics/<%= memberid%>"><button class="create-btn" type="submit">Electronics</button></a>
+      <a href="/pharmacy/<%= memberid%>"><button class="create-btn" type="submit">Pharmacy</button></a>
       
 
-      <h2>Clothes</h2>
+      <h2>Cleaning</h2>
       
       <table class="retro-table">
         <thead>
@@ -69,8 +69,8 @@
           </tr>
         </thead>
         <tbody>
-            <% if (clothes && clothes.length > 0) { %>
-              <% clothes.forEach(product => { %>
+            <% if (cleaning && cleaning.length > 0) { %>
+              <% cleaning.forEach(product => { %>
                 <tr>
                   <td><%= product.name %></td>
                   <td>$<%= product.price %></td>
@@ -80,10 +80,12 @@
                 </tr>
               <% }); %>
             <% } else { %>
-              <tr><td colspan="3">No Clothes available</td></tr>
+              <tr><td colspan="3">No Cleaning available</td></tr>
             <% } %>
           </tbody>
       </table>
+      <a href="/frozen/<%= memberid%>"><button>Frozen</button></a>
+      <a href="/dairy/<%= memberid%>"><button>Dairy</button></a>
     </div>
   </div>
   <script src="/modal.js" defer></script>
