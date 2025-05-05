@@ -3,9 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>member Profile - Super App</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <%= member.first_name %>
+    <div class="window">
+        <div class="title-bar">
+            <span class="title">
+              <span class="s">S</span><span class="u">u</span><span class="p">p</span><span class="e">e</span><span class="r">r</span>
+              <span class="s">S</span><span class="u">h</span><span class="p">o</span><span class="e">p</span><span class="r">p</span><span class="s">i</span><span class="u">n</span><span class="p">g</span>
+              <span class="s">S</span><span class="u">i</span><span class="p">m</span><span class="e">u</span><span class="r">l</span><span class="s">a</span><span class="u">t</span><span class="p">o</span><span class="e">r</span>
+            </span>
+            <div class="icon-button-group">
+              <a href="/profile/<%= memberid%>">
+                <button class="icon-button">
+                  <img src="/human_white.png" alt="Account" style="width: 25px; height: 25px;">
+              </button>
+              </a>
+            </div>
+          </div>
+        <div class="content">
+            <div style="display: flex; align-items: flex-start;">
+                <!-- Profile Picture Placeholder -->
+                <div style="width: 100px; height: 100px; background-color: #dcdcdc; border: 2px inset #000; margin-right: 30px; display: flex; justify-content: center; align-items: center;">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="5"></circle>
+                        <path d="M3 21v-2a7 7 0 0 1 14 0v2"></path>
+                    </svg>
+                </div>
+                
+                <!-- member Information -->
+                <div style="flex-grow: 1;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <h1 style="margin: 0; margin-right: 15px;">
+                            <%= member.first_name %> <%= member.last_name %>
+                        </h1>
+                        <div style="background-color: #f0f0f0; border: 2px inset #000; padding: 5px 10px; font-weight: bold;">
+                            <%= member.points %> Points
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <span>Email:</span>
+                            <div style="display: flex; align-items: center; width: 60%;">
+                                <input type="text" value="<%= member.email %>" readonly style="margin-right: 10px; flex-grow: 1;">
+                                <button class="retro-btn">Edit</button>
+                            </div>
+                        </label>
+                        
+                        <label style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <span>Phone:</span>
+                            <div style="display: flex; align-items: center; width: 60%;">
+                                <input type="text" value="<%= member.phone %>" readonly style="margin-right: 10px; flex-grow: 1;">
+                                <button class="retro-btn">Edit</button>
+                            </div>
+                        </label>
+                        
+                        <label style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <span>Password:</span>
+                            <div style="display: flex; align-items: center; width: 60%;">
+                                <input type="password" value="********" readonly style="margin-right: 10px; flex-grow: 1;">
+                                <button class="retro-btn">Edit</button>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <h2 style="margin-top: 30px; margin-bottom: 15px; color: black;">Prev Orders:</h2>
+                    <div style="display: flex; gap: 15px;">
+                        <div onclick="openOrderModal(1)" style="width: 80px; height: 80px; background-color: #dcdcdc; border: 2px outset #000; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; color: navy;">
+                            #1
+                        </div>
+                        <div onclick="openOrderModal(2)" style="width: 80px; height: 80px; background-color: #dcdcdc; border: 2px outset #000; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; color: navy;">
+                            #2
+                        </div>
+                        <div onclick="openOrderModal(3)" style="width: 80px; height: 80px; background-color: #dcdcdc; border: 2px outset #000; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; color: navy;">
+                            #3
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2>Order Details</h2>
+            <div id="orderDetails">
+                <!-- Order details will be populated here -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Sample order data - in a real app, this would come from your backend
+        const orders = {
+            1: {
+                id: 1,
+                date: "2025-04-25",
+                items: [
+                    { name: "Windows 95 CD", price: 19.95, quantity: 1 },
+                    { name: "3.5\" Floppy Disk", price: 4.99, quantity: 5 }
+                ],
+                total: 44.90
+            },
+            2: {
+                id: 2,
+                date: "2025-04-15",
+                items: [
+                    { name: "CRT Monitor", price: 149.99, quantity: 1 },
+                    { name: "Ball Mouse", price: 12.99, quantity: 1 }
+                ],
+                total: 162.98
+            },
+            3: {
+                id: 3,
+                date: "2025-03-30",
+                items: [
+                    { name: "Dial-up Modem", price: 29.99, quantity: 1 }
+                ],
+                total: 29.99
+            }
+        };
+        
+        function openOrderModal(orderId) {
+            const modal = document.getElementById("orderModal");
+            const orderDetails = document.getElementById("orderDetails");
+            const order = orders[orderId];
+            
+            if (order) {
+                let html = `
+                    <div style="background-color: #dcdcdc; padding: 10px; border: 2px inset #000; margin-bottom: 15px;">
+                        <p><strong>Order #${order.id}</strong></p>
+                        <p>Date: ${order.date}</p>
+                    </div>
+                    <table class="retro-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                order.items.forEach(item => {
+                    html += `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>$${item.price.toFixed(2)}</td>
+                            <td>${item.quantity}</td>
+                            <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+                
+                html += `
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
+                                <td><strong>$${order.total.toFixed(2)}</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <button class="retro-btn" onclick="printOrder(${order.id})">Print</button>
+                    </div>
+                `;
+                
+                orderDetails.innerHTML = html;
+            } else {
+                orderDetails.innerHTML = "<p>Order not found</p>";
+            }
+            
+            modal.classList.add("show");
+        }
+        
+        function closeOrderModal() {
+            const modal = document.getElementById("orderModal");
+            modal.classList.remove("show");
+        }
+        
+        function printOrder(orderId) {
+            alert("Sending order #" + orderId + " to printer...");
+        }
+        
+        // Close modal if clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById("orderModal");
+            if (event.target === modal) {
+                closeOrderModal();
+            }
+        }
+    </script>
 </body>
 </html>
