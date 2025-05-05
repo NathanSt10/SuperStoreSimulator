@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Shopping Simulator</title>
+  <link rel="stylesheet" href="http://localhost:3000/styles.css">
+</head>
+<body>
+  <div class="window">
+    <div class="title-bar">
+      <span class="title">
+        <span class="s">S</span><span class="u">u</span><span class="p">p</span><span class="e">e</span><span class="r">r</span>
+        <span class="s">S</span><span class="u">h</span><span class="p">o</span><span class="e">p</span><span class="r">p</span><span class="s">i</span><span class="u">n</span><span class="p">g</span>
+        <span class="s">S</span><span class="u">i</span><span class="p">m</span><span class="e">u</span><span class="r">l</span><span class="s">a</span><span class="u">t</span><span class="p">o</span><span class="e">r</span>
+      </span>
+      <div class="icon-button-group">
+        <button id="memberButton" class="icon-button">
+          <img src="/cart_white.png" alt="Cart" style="width: 25px; height: 25px;">
+        </button>
+        <a href="/acccount">
+          <button class="icon-button">
+            <img src="/human_white.png" alt="Account" style="width: 25px; height: 25px;">
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="memberModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <h2>Cart</h2>
+
+            <ul>
+              <% if (cart && cart.length > 0) { %>                 
+                <% cart.forEach(item => { %>
+                  <li>
+                    <%= item.product %>
+                    <%= item.product_quantity %>
+
+                  </li>
+                <% }); %>
+              <% } else { %>  
+                <li>No users found</li>
+              <% } %>
+            </ul>
+
+        </div>
+    </div>
+    
+    <div class="content">
+      
+      <a href="/electronics/<%= memberid%>"><button class="create-btn" type="submit">Electronics</button></a>
+      <a href="/Pharmacy/<%= memberid%>"><button class="create-btn" type="submit">Pharmacy</button></a>
+      
+
+      <h2>Cleaning</h2>
+      
+      <table class="retro-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Brand</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% if (cleaning && cleaning.length > 0) { %>
+              <% cleaning.forEach(product => { %>
+                <tr>
+                  <td><%= product.name %></td>
+                  <td>$<%= product.price %></td>
+                  <td><%= product.quantity %></td>
+                  <td><%= product.brand %></td>
+                  <td><%= product.category %></td>
+                </tr>
+              <% }); %>
+            <% } else { %>
+              <tr><td colspan="3">No Cleaning available</td></tr>
+            <% } %>
+          </tbody>
+      </table>
+      <a href="/frozen/<%= memberid%>"><button>Frozen</button></a>
+      <a href="/dairy/<%= memberid%>"><button>Dairy</button></a>
+    </div>
+  </div>
+  <script src="/modal.js" defer></script>
+</body>
+</html>
