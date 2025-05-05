@@ -16,12 +16,10 @@
     </div>
     
     <div class="content">
-      <h1>Checkout</h1>
+      <h1>THANK YOU</h1>
 
-      
-      <a href="/thank"><button class="create-btn" type="submit">PAY</button></a>
 
-      <h2>Checkout</h2>
+      <h2>THANK YOU</h2>
       
       <table class="retro-table">
         <thead>
@@ -32,12 +30,10 @@
           </tr>
         </thead>
         <tbody>
-            <% if (checkout && checkout.length > 0) { %>
-              <% checkout.forEach(item => { %>
+            <% if (thank && thank.length > 0) { %>
+              <% thank.forEach(order => { %>
                 <tr>
-                  <td><%= item.product %></td>
-                  <td><%= item.product_quantity %></td>
-                  <td>$<%= item.price %></td>
+                  <td><%= order.price %></td>
                 </tr>
               <% }); %>
             <% } else { %>
