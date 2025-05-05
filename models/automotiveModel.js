@@ -6,11 +6,11 @@ class Automotive {
     return rows;
   }
 
-  static async addToCart() {
-    const query = "INSERT INTO members (first_name, last_name, email, phone_number, membership) VALUES (?, ?, ?, ?, ?)";
-    const [result] = await db.query(query, [first_name, last_name, email, phone_number, membership_tier]);
+  static async addToCart(memberId, productId, quantity) {
+    const query = "CALL add_to_bag(?, ?, ?)";
+    const [result] = await db.query(query, [memberId, productId, quantity]);
     console.log(result);
-    return result.insertId;
+    return result;
   }
 
 }
