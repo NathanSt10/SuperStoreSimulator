@@ -3,6 +3,6 @@ const bakeryController = require("../../controllers/aisles/bakeryController");
 
 const bakeryRouter = Router();
 
-bakeryRouter.get("/", bakeryController.bakeryGet);
+bakeryRouter.get("/:id", bakeryController.bakeryGet);
 
 module.exports = bakeryRouter;

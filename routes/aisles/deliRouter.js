@@ -3,6 +3,6 @@ const deliController = require("../../controllers/aisles/deliController");
 
 const deliRouter = Router();
 
-deliRouter.get("/", deliController.deliGet);
+deliRouter.get("/:id", deliController.deliGet);
 
 module.exports = deliRouter;
