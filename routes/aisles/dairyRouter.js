@@ -3,6 +3,6 @@ const dairyController = require("../../controllers/aisles/dairyController");
 
 const dairyRouter = Router();
 
-dairyRouter.get("/", dairyController.dairyGet);
+dairyRouter.get("/:id", dairyController.dairyGet);
 
 module.exports = dairyRouter;

@@ -54,8 +54,8 @@
       
 
       
-      <a href="/entrance/:id"><button class="create-btn" type="submit">Produce</button></a>
-      <a href="/deli"><button class="create-btn" type="submit">Deli</button></a>
+      <a href="/entrance/<%= memberid%>"><button class="create-btn" type="submit">Produce</button></a>
+      <a href="/deli/<%= memberid%>"><button class="create-btn" type="submit">Deli</button></a>
       
 
       <h2>Bakery</h2>
@@ -87,7 +87,7 @@
           </tbody>
       </table>
 
-      <a href="/pharmacy"><button>Pharmacy</button></a>
+      <a href="/pharmacy/<%= memberid%>"><button>Pharmacy</button></a>
     </div>
   </div>
   <script src="modal.js" defer></script>
