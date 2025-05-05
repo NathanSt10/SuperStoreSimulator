@@ -17,7 +17,7 @@
         <button id="memberButton" class="icon-button">
           <img src="/cart_white.png" alt="Cart" style="width: 25px; height: 25px;">
         </button>
-        <a href="/acccount">
+        <a href="/profile/<%= memberid%>">
           <button class="icon-button">
             <img src="/human_white.png" alt="Account" style="width: 25px; height: 25px;">
           </button>
@@ -52,8 +52,8 @@
     
     <div class="content">
       
-      <a href="/bakery"><button class="create-btn" type="submit">Bakery</button></a>
-      <a href="/dairy"><button class="create-btn" type="submit">Dairy</button></a>
+      <a href="/bakery/<%= memberid%>"><button class="create-btn" type="submit">Bakery</button></a>
+      <a href="/dairy/<%= memberid%>"><button class="create-btn" type="submit">Dairy</button></a>
       
 
       <h2>Deli</h2>
@@ -85,9 +85,9 @@
           </tbody>
       </table>
 
-      <a href="/pharmacy"><button>Pharmacy</button></a>
+      <a href="/pharmacy/<%= memberid%>"><button>Pharmacy</button></a>
     </div>
   </div>
-  <script src="modal.js" defer></script>
+  <script src="/modal.js" defer></script>
 </body>
 </html>
