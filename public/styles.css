@@ -12,7 +12,6 @@ background-color: #008080; /* Windows 95 teal */
   background-color: #c0c0c0;
   border: 2px solid black;
   width: 1000px;
-  height: 100vh;
   padding: 0;
   box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
 }
@@ -316,8 +315,9 @@ button:hover {
 
 .retro-table th, .retro-table td {
   border: 2px inset #000;
-  padding: 10px;
-  text-align: left;
+  padding: 4px 6px; /* reduced from 10px */
+  font-size: 14px;  /* smaller font size */
+  line-height: 1.2; /* tighter line height */
 }
 
 .retro-table th {
@@ -373,3 +373,43 @@ button:hover {
   min-width: 30px;
   text-align: right;
 }
+
+.table-container {
+  max-height: 300px; /* Adjust as needed */
+  overflow-y: auto;
+  border: 1px solid #ccc; /* Optional: gives it a border */
+  margin-bottom: 1rem;     /* Optional: spacing */
+}
+
+/* Scrollbar styling for WebKit browsers (Chrome, Safari, Edge) */
+.table-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #e0e0e0; /* Light gray retro look */
+  border: 2px solid #999;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 2px solid #666;
+  border-radius: 0; /* Square corners for a pixel/retro feel */
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Fixed retro-style table header */
+.retro-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #c0c0c0;
+  color: black;
+  font-weight: bold;
+  border: 2px inset #000;
+  z-index: 1; /* Ensure headers appear above scrolling rows */
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
+}
+

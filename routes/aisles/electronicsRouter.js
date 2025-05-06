@@ -4,5 +4,6 @@ const electronicsController = require("../../controllers/aisles/electronicsContr
 const electronicsRouter = Router();
 
 electronicsRouter.get("/:id", electronicsController.electronicsGet);
+electronicsRouter.post("/add/:id", electronicsController.addItem);
 
 module.exports = electronicsRouter;

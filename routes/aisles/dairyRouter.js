@@ -4,5 +4,6 @@ const dairyController = require("../../controllers/aisles/dairyController");
 const dairyRouter = Router();
 
 dairyRouter.get("/:id", dairyController.dairyGet);
+dairyRouter.post("/add/:id", dairyController.addItem);
 
 module.exports = dairyRouter;
