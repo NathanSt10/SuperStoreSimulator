@@ -9,14 +9,11 @@ exports.officeWelcomeGet = asyncHandler(async (req, res) => {
     });
   });
 
-// Update a member
-//.put('/members/:id', (req, res) => {
+
 exports.officeUpdate = asyncHandler(async (req, res) => {
   const { id } = req.params;
   let { email, phone_number } = req.body;
   const [[member]] = await Member.getMember(id);
-  //console.log("member: ", member)
-  // console.log("Last", member[1])
   if(email == "") {
     email = member.email
   }
