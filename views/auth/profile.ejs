@@ -71,15 +71,15 @@
                     
                     <h2 style="margin-top: 30px; margin-bottom: 15px; color: black;">Prev Orders:</h2>
                     <div style="display: flex; gap: 15px;">
-                        <div onclick="openOrderModal(1)" style="width: 80px; height: 80px; background-color: #dcdcdc; border: 2px outset #000; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; color: navy;">
-                            #1
-                        </div>
-                        <div onclick="openOrderModal(2)" style="width: 80px; height: 80px; background-color: #dcdcdc; border: 2px outset #000; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; color: navy;">
-                            #2
-                        </div>
-                        <div onclick="openOrderModal(3)" style="width: 80px; height: 80px; background-color: #dcdcdc; border: 2px outset #000; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; color: navy;">
-                            #3
-                        </div>
+                        <% if (orders && orders.length > 0) { %>
+                            <% orders.forEach((order) => { %>
+                                <div onclick="openOrderModal('<%= order.member_order_number %>',  '<%= memberid %>')" style="width: 80px; height: 80px; background-color: #dcdcdc; border: 2px outset #000; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; color: navy;">
+                                    #<%= order.member_order_number %>
+                                </div>
+                            <% }); %>
+                          <% } else { %>
+                            <div>No Orders</div>
+                          <% } %>
                     </div>
                 </div>
             </div>
@@ -98,108 +98,79 @@
     </div>
     
     <script>
-        // Sample order data - in a real app, this would come from your backend
-        const orders = {
-            1: {
-                id: 1,
-                date: "2025-04-25",
-                items: [
-                    { name: "Windows 95 CD", price: 19.95, quantity: 1 },
-                    { name: "3.5\" Floppy Disk", price: 4.99, quantity: 5 }
-                ],
-                total: 44.90
-            },
-            2: {
-                id: 2,
-                date: "2025-04-15",
-                items: [
-                    { name: "CRT Monitor", price: 149.99, quantity: 1 },
-                    { name: "Ball Mouse", price: 12.99, quantity: 1 }
-                ],
-                total: 162.98
-            },
-            3: {
-                id: 3,
-                date: "2025-03-30",
-                items: [
-                    { name: "Dial-up Modem", price: 29.99, quantity: 1 }
-                ],
-                total: 29.99
-            }
-        };
-        
-        function openOrderModal(orderId) {
+        async function openOrderModal(orderNumber, memberId) {
             const modal = document.getElementById("orderModal");
             const orderDetails = document.getElementById("orderDetails");
-            const order = orders[orderId];
-            
-            if (order) {
+
+            // Show loading
+            orderDetails.innerHTML = "<p>Loading order details...</p>";
+
+            try {
+                // Fetch details
+                const response = await fetch(`/profile/${memberId}/orders/${orderNumber}/details`);
+                const orderItems = await response.json(); // Wait for the response to be converted to JSON
+
+                // Check if orderItems has data
+                if (!orderItems || orderItems.length === 0) {
+                    orderDetails.innerHTML = "<p>No details found for this order.</p>";
+                    return;
+                }
+
+                // Generate HTML table for the order details
                 let html = `
                     <div style="background-color: #dcdcdc; padding: 10px; border: 2px inset #000; margin-bottom: 15px;">
-                        <p><strong>Order #${order.id}</strong></p>
-                        <p>Date: ${order.date}</p>
+                        <p><strong>Order #${orderNumber}</strong></p>
                     </div>
                     <table class="retro-table">
                         <thead>
                             <tr>
                                 <th>Item</th>
                                 <th>Price</th>
-                                <th>Qty</th>
-                                <th>Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
                 `;
-                
-                order.items.forEach(item => {
+
+                // Iterate over the orderItems array and add them to the table
+                orderItems.forEach(item => {
                     html += `
                         <tr>
-                            <td>${item.name}</td>
-                            <td>$${item.price.toFixed(2)}</td>
-                            <td>${item.quantity}</td>
-                            <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                            <td>${item.product}</td>
+                            <td>$${parseFloat(item.price).toFixed(2)}</td>
                         </tr>
                     `;
                 });
-                
+
                 html += `
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
-                                <td><strong>$${order.total.toFixed(2)}</strong></td>
-                            </tr>
-                        </tfoot>
                     </table>
-                    <div style="margin-top: 20px; text-align: center;">
-                        <button class="retro-btn" onclick="printOrder(${order.id})">Print</button>
-                    </div>
                 `;
-                
+
+                // Inject the generated HTML into the modal
                 orderDetails.innerHTML = html;
-            } else {
-                orderDetails.innerHTML = "<p>Order not found</p>";
+
+            } catch (err) {
+                console.error(err);
+                orderDetails.innerHTML = "<p>Error loading order details.</p>";
             }
-            
+
+            // Show the modal
             modal.classList.add("show");
-        }
-        
+            }
+
+
         function closeOrderModal() {
             const modal = document.getElementById("orderModal");
             modal.classList.remove("show");
         }
-        
-        function printOrder(orderId) {
-            alert("Sending order #" + orderId + " to printer...");
-        }
-        
-        // Close modal if clicking outside of it
+
         window.onclick = function(event) {
             const modal = document.getElementById("orderModal");
             if (event.target === modal) {
                 closeOrderModal();
             }
         }
+
     </script>
 </body>
 </html>
