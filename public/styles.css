@@ -413,3 +413,14 @@ button:hover {
   box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
 }
 
+.payment-buttons {
+  display: flex;
+  gap: 10px; /* space between buttons */
+  justify-content: center; /* center them horizontally */
+  margin-top: 20px;
+}
+
+.payment-buttons form {
+  margin: 0; /* remove default margin */
+}
+
