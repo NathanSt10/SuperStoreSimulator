@@ -56,7 +56,7 @@
       
 
       <h2>Beauty</h2>
-      
+      <div class="table-container">
       <table class="retro-table">
         <thead>
           <tr>
@@ -65,6 +65,7 @@
             <th>Stock</th>
             <th>Brand</th>
             <th>Category</th>
+            <th>Add</th>
           </tr>
         </thead>
         <tbody>
@@ -76,6 +77,12 @@
                   <td><%= product.quantity %></td>
                   <td><%= product.brand %></td>
                   <td><%= product.category %></td>
+                  <td>
+                    <form action="/beauty/add/<%= memberid%>" method="POST" style="margin:0;">
+                      <input type="hidden" name="productName" value="<%= product.name %>">
+                      <button class="create-btn" type="submit" style="padding: 2px 6px; font-size: 12px;">+</button>
+                    </form>
+                  </td>
                 </tr>
               <% }); %>
             <% } else { %>
@@ -83,6 +90,7 @@
             <% } %>
           </tbody>
       </table>
+    </div>
       <a href="/clothes/<%= memberid%>"><button>Clothes</button></a>
     </div>
   </div>

@@ -4,5 +4,6 @@ const toysController = require("../../controllers/aisles/toysController");
 const toysRouter = Router();
 
 toysRouter.get("/:id", toysController.toysGet);
+toysRouter.post("/add/:id", toysController.addItem);
 
 module.exports = toysRouter;

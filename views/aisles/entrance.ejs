@@ -59,6 +59,7 @@
 
       <h2>Produce Aisle</h2>
       
+      <div class="table-container">
       <table class="retro-table">
         <thead>
           <tr>
@@ -67,6 +68,7 @@
             <th>Stock</th>
             <th>Brand</th>
             <th>Category</th>
+            <th>Add</th>
           </tr>
         </thead>
         <tbody>
@@ -81,7 +83,7 @@
                 <td>
                   <form action="/entrance/add/<%= memberid%>" method="POST" style="margin:0;">
                     <input type="hidden" name="productName" value="<%= product.name %>">
-                    <button class="create-btn" type="submit" style="padding: 2px 6px; font-size: 12px;">Add</button>
+                    <button class="create-btn" type="submit" style="padding: 2px 6px; font-size: 12px;">+</button>
                   </form>
                 </td>
               </tr>
@@ -91,6 +93,7 @@
             <% } %>
           </tbody>
       </table>
+    </div>
 
       <a href="/"><button>Go Back</button></a>
     </div>
