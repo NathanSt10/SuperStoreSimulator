@@ -68,23 +68,32 @@
             <th>Stock</th>
             <th>Brand</th>
             <th>Category</th>
+            <th>Add</th> <!-- Added for the button column -->
           </tr>
         </thead>
         <tbody>
-            <% if (produce && produce.length > 0) { %>
-              <% produce.forEach(product => { %>
-                <tr>
-                  <td><%= product.name %></td>
-                  <td>$<%= product.price %></td>
-                  <td><%= product.quantity %></td>
-                  <td><%= product.brand %></td>
-                  <td><%= product.category %></td>
-                </tr>
-              <% }); %>
-            <% } else { %>
-              <tr><td colspan="3">No produce available</td></tr>
-            <% } %>
-          </tbody>
+          <% if (produce && produce.length > 0) { %>
+            <% produce.forEach(product => { %>
+              <tr>
+                <td><%= product.name %></td>
+                <td>$<%= product.price %></td>
+                <td><%= product.quantity %></td>
+                <td><%= product.brand %></td>
+                <td><%= product.category %></td>
+                <td>
+                  <form action="/entrance/add/<%= memberid%>" method="POST" style="margin:0;">
+                    <input type="hidden" name="productName" value="<%= product.name %>">
+                    <button class="create-btn" type="submit">Add</button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="6">No produce available</td>
+            </tr>
+          <% } %>
+        </tbody>
       </table>
 
       <a href="/"><button>Go Back</button></a>
