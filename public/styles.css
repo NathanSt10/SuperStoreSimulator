@@ -12,6 +12,7 @@ background-color: #008080; /* Windows 95 teal */
   background-color: #c0c0c0;
   border: 2px solid black;
   width: 1000px;
+  height: 100vh;
   padding: 0;
   box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
 }
