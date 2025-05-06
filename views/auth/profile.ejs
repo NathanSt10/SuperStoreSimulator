@@ -112,6 +112,11 @@
                 const response = await fetch(`/profile/${memberId}/orders/${orderNumber}/details`);
                 const orderItems = await response.json(); // Wait for the response to be converted to JSON
 
+                let totalPrice = 0;
+                orderItems.forEach(item => {
+                    totalPrice += parseFloat(item.price) * parseInt(item.quantity, 10);
+                });
+
                 // Check if orderItems has data
                 if (!orderItems || orderItems.length === 0) {
                     orderDetails.innerHTML = "<p>No details found for this order.</p>";
@@ -122,6 +127,7 @@
                 let html = `
                     <div style="background-color: #dcdcdc; padding: 10px; border: 2px inset #000; margin-bottom: 15px;">
                         <p><strong>Order #${orderNumber}</strong></p>
+                        <p><strong>Total: $${totalPrice.toFixed(2)}</strong></p>
                     </div>
                     <table class="retro-table">
                         <thead>
@@ -160,7 +166,7 @@
 
             // Show the modal
             modal.classList.add("show");
-            }
+        }
 
 
         function closeOrderModal() {
