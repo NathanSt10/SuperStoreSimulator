@@ -5,7 +5,7 @@ const Cart = require("../../models/cartModel");
 exports.bakeryGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
   const bakery = await Bakery.findAll();
-  const cart = await Cart.findAll();
+  const cart = await Cart.findAll(memberid);
   res.render("aisles/bakery", {
     title: "SuperStore",
     bakery: bakery,

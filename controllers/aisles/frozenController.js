@@ -5,7 +5,7 @@ const Cart = require("../../models/cartModel");
 exports.frozenGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
   const frozen = await Frozen.findAll();
-  const cart = await Cart.findAll();
+  const cart = await Cart.findAll(memberid);
   res.render("aisles/frozen", {
     title: "SuperStore",
     frozen: frozen,

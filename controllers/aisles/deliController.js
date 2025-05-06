@@ -5,7 +5,7 @@ const Cart = require("../../models/cartModel");
 exports.deliGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
   const deli = await Deli.findAll();
-  const cart = await Cart.findAll();
+  const cart = await Cart.findAll(memberid);
   res.render("aisles/deli", {
     title: "SuperStore",
     deli: deli,

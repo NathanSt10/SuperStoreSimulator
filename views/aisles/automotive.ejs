@@ -33,17 +33,16 @@
 
             <h2>Cart</h2>
 
-            <ul>
+            <ul class="cart-list">
               <% if (cart && cart.length > 0) { %>                 
                 <% cart.forEach(item => { %>
-                  <li>
-                    <%= item.product %>
-                    <%= item.product_quantity %>
-
+                  <li class="cart-item">
+                    <span class="item-name"><%= item.product %></span>
+                    <span class="item-qty">Qty: <%= item.product_quantity %></span>
                   </li>
                 <% }); %>
               <% } else { %>  
-                <li>No users found</li>
+                <li>No items found</li>
               <% } %>
             </ul>
 
@@ -53,7 +52,7 @@
     <div class="content">
       
       <a href="/beauty/<%= memberid%>"><button class="create-btn" type="submit">Beauty</button></a>
-      <a href="/checkout"><button class="create-btn" type="submit">Proceed to Checkout</button></a>
+      <a href="/checkout/<%= memberid%>"><button class="create-btn" type="submit">Proceed to Checkout</button></a>
       
 
       <h2>Automotive</h2>
