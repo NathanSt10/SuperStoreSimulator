@@ -496,7 +496,7 @@ cost, member_id from orders;
 
 create view view_orderdetail as
 select row_number() over (partition by o.member_id order by o.id) as member_order_number, p.`name` as product,
-od.price, member_id from orderdetails od join orders o on od.order_id = o.id 
+od.price, od.quantity, member_id from orderdetails od join orders o on od.order_id = o.id 
 join product p on od.product_id = p.id;
 
 create view checkout as
