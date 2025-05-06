@@ -3,6 +3,6 @@ const checkoutController = require("../../controllers/checkout/checkoutControlle
 
 const checkoutRouter = Router();
 
-checkoutRouter.get("/", checkoutController.checkoutGet);
+checkoutRouter.get("/:id", checkoutController.checkoutGet);
 
 module.exports = checkoutRouter;
