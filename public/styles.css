@@ -63,7 +63,7 @@ background-color: #008080; /* Windows 95 teal */
 .title .sh { color: blue; }
 .title .si { color: red; }
 
-.b { color: #00ffff; }
+.b { color: #00ffff; font-weight: bold; font-size: 25px;}
 
 .content {
   padding: 30px 50px;
