@@ -33,13 +33,12 @@
 
             <h2>Cart</h2>
 
-            <ul>
+            <ul class="cart-list">
               <% if (cart && cart.length > 0) { %>                 
                 <% cart.forEach(item => { %>
-                  <li>
-                    <%= item.product %>
-                    <%= item.product_quantity %>
-
+                  <li class="cart-item">
+                    <span class="item-name"><%= item.product %></span>
+                    <span class="item-qty">Qty: <%= item.product_quantity %></span>
                   </li>
                 <% }); %>
               <% } else { %>  
@@ -55,7 +54,7 @@
 
       
       <a href="/checkout/<%= memberid%>"><button class="create-btn" type="submit">Proceed to Checkout</button></a>
-      <a href="/office<%= memberid%>"><button class="create-btn" type="submit">Go to Office</button></a>
+      <a href="/office/<%= memberid%>"><button class="create-btn" type="submit">Go to Office</button></a>
       <a href="/bakery/<%= memberid%>"><button class="create-btn">Bakery</button></a>
 
       <h2>Produce Aisle</h2>
@@ -82,7 +81,7 @@
                 <td>
                   <form action="/entrance/add/<%= memberid%>" method="POST" style="margin:0;">
                     <input type="hidden" name="productName" value="<%= product.name %>">
-                    <button class="create-btn" type="submit">Add</button>
+                    <button class="create-btn" type="submit" style="padding: 2px 6px; font-size: 12px;">Add</button>
                   </form>
                 </td>
               </tr>

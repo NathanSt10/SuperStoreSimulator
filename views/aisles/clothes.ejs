@@ -33,17 +33,16 @@
 
             <h2>Cart</h2>
 
-            <ul>
+            <ul class="cart-list">
               <% if (cart && cart.length > 0) { %>                 
                 <% cart.forEach(item => { %>
-                  <li>
-                    <%= item.product %>
-                    <%= item.product_quantity %>
-
+                  <li class="cart-item">
+                    <span class="item-name"><%= item.product %></span>
+                    <span class="item-qty">Qty: <%= item.product_quantity %></span>
                   </li>
                 <% }); %>
               <% } else { %>  
-                <li>No users found</li>
+                <li>No items found</li>
               <% } %>
             </ul>
 

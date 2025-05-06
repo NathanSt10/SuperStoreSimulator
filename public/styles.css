@@ -352,3 +352,24 @@ button:hover {
   gap: 8px; /* space between icons */
   align-items: center;
 }
+
+.cart-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.item-name {
+  flex: 1;
+}
+
+.item-qty {
+  min-width: 30px;
+  text-align: right;
+}
