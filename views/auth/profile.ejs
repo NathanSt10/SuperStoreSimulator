@@ -44,29 +44,31 @@
                     </div>
                     
                     <div style="margin-bottom: 15px;">
+                        <form action="/profile/<%= memberid %>" method="POST">
                         <label style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span>Email:</span>
+                            <span>Email: <%= member.email %></span>
                             <div style="display: flex; align-items: center; width: 60%;">
-                                <input type="text" value="<%= member.email %>" readonly style="margin-right: 10px; flex-grow: 1;">
+                                <input type="text" placeholder="New Email" name="email" style="margin-right: 10px; flex-grow: 1;">
                                 <button class="retro-btn">Edit</button>
                             </div>
                         </label>
                         
                         <label style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span>Phone:</span>
+                            <span>Phone: <%= member.phone_number %></span>
                             <div style="display: flex; align-items: center; width: 60%;">
-                                <input type="text" value="<%= member.phone %>" readonly style="margin-right: 10px; flex-grow: 1;">
+                                <input type="text" placeholder="Edit Phone Number" name="phone_number" style="margin-right: 10px; flex-grow: 1;">
                                 <button class="retro-btn">Edit</button>
                             </div>
                         </label>
                         
                         <label style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                            <span>Password:</span>
+                            <span>Password: </span>
                             <div style="display: flex; align-items: center; width: 60%;">
-                                <input type="password" value="********" readonly style="margin-right: 10px; flex-grow: 1;">
+                                <input type="password" placeholder="*********" style="margin-right: 10px; flex-grow: 1;">
                                 <button class="retro-btn">Edit</button>
                             </div>
                         </label>
+                        </form>
                     </div>
                     
                     <h2 style="margin-top: 30px; margin-bottom: 15px; color: black;">Prev Orders:</h2>
