@@ -4,6 +4,60 @@
   <meta charset="UTF-8">
   <title>Super Shopping Simulator</title>
   <link rel="stylesheet" href="http://localhost:3000/styles.css">
+  <style>
+    .popup-alert {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: #ff0000; /* Red box */
+      border: 2px solid black;
+      box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
+      padding: 20px;
+      width: 300px;
+      z-index: 1000;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+    }
+  
+    .popup-content {
+      color: black; /* Black text */
+      font-size: 16px;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+  
+    .popup-button {
+      margin-top: 15px;
+      padding: 5px 15px;
+      background-color: #dcdcdc;
+      border: 2px outset #000;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  
+    .popup-button:hover {
+      background-color: #fff;
+    }
+
+    .popup-welcome {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-color: #a9a9a9 !important;
+      border: 2px solid black;
+      box-shadow: inset -1px -1px #fff, inset 1px 1px #000;
+      padding: 20px;
+      width: 300px;
+      z-index: 1000;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+  
+  
 </head>
 <body>
   <div>
@@ -19,20 +73,60 @@
         <span class="s">S</span><span class="u">i</span><span class="p">m</span><span class="e">u</span><span class="r">l</span><span class="s">a</span><span class="u">t</span><span class="p">o</span><span class="e">r</span>
       </span>
     </div>
+
+    <% if (invalidLogin) { %>
+    <div id="errorPopup" class="popup-alert">
+      <div class="popup-content">
+        Wrong username or password.
+      </div>
+      <button id="closePopupBtn" class="popup-button">OK</button>
+    </div>
+    <% } %>
+
+    <% if (showWelcome && registeredUsername) { %>
+      <div id="welcomePopup" class="popup-welcome">
+        <div class="popup-content">
+          Thank you for purchasing a membership! Your username is: <span class="b"><%= registeredUsername %></span> Remember this you'll need it to login!
+        </div>
+        <button id="closeWelcomePopupBtn" class="popup-button">OK</button>
+      </div>
+    <% } %>
+
     <div class="content">
       <h1>LOGIN</h1>
-      <form>
+      <form action="/login" method="POST">
         <label>Username:
-          <input type="email" placeholder="email@example.com">
+          <input type="text" name="username">
         </label>
         <label>Password:
-          <input type="password" placeholder="************">
+          <input type="password" name="password">
         </label>
-        
+        <button type="submit">Submit</button>
       </form>
-      
-        <a href="/office"><button type="submit">Submit</button></a>
     </div>
   </div>
+  <script>
+    // Close login error popup
+    const errorBtn = document.getElementById('closePopupBtn');
+    if (errorBtn) {
+      errorBtn.addEventListener('click', function () {
+        const popup = document.getElementById('errorPopup');
+        if (popup) popup.style.display = 'none';
+      });
+    }
+  
+    // Close welcome popup
+    const welcomeBtn = document.getElementById('closeWelcomePopupBtn');
+    if (welcomeBtn) {
+      welcomeBtn.addEventListener('click', function () {
+        const popup = document.getElementById('welcomePopup');
+        if (popup) popup.style.display = 'none';
+      });
+    }
+
+    if (window.location.search.includes('registered=true')) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  </script>
 </body>
 </html>

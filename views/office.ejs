@@ -32,19 +32,20 @@
                 <% if (members && members.length > 0) { %>                 
                   <% members.forEach(member => { %>
                     <li>
-                      First Name: <%= member.first_name %> 
-                      Last Name: <%= member.last_name %>
+                      <%= member.full_name %>
+                      <%= member.email %>
+                      <%= member.phone_number %>
 
                       <!-- Update Form -->
                       <form action="/office/<%= member.id %>" method="POST" style="display:inline;">
-                        <input type="text" name="first_name" placeholder="New First Name">
-                        <input type="text" name="last_name" placeholder="New Last Name">
+                        <input type="text" name="email" placeholder="New Email">
+                        <input type="text" name="phone_number" placeholder="New Phone">
                         <button type="submit">Update</button>
                       </form>
 
                       <!-- Delete Button -->
-                      <form action="/members/<%= member.id %>?_method=DELETE" method="POST" style="display:inline;">
-                        <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                      <form action="/office/delete/<%= member.id %>" method="POST" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Are you sure?')">Delete</button></a>
                       </form>
                     </li>
                   <% }); %>
@@ -52,14 +53,6 @@
                   <li>No users found</li>
                 <% } %>
               </ul>
-
-              <!-- Create New Member Form -->
-              <h3>Add New Member</h3>
-              <form action="/members" method="POST">
-                <input type="text" name="first_name" placeholder="First Name" required>
-                <input type="text" name="last_name" placeholder="Last Name" required>
-                <button type="submit">Add Member</button>
-              </form>
 
           </div>
       </div>
