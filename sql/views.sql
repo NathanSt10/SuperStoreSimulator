@@ -4,7 +4,7 @@ as select m.first_name, m.last_name, m.full_name, m.email, m.phone_number, mem.m
 from `members` as m join `membership` as mem on m.membership = mem.id;
 
 create view aisle_view as
-select p.`name` as `name`, p.price, p.quantity, s.`name` as brand, c.`name` as category, d.id as department
+select p.id, p.`name` as `name`, p.price, p.quantity, s.`name` as brand, c.`name` as category, d.id as department
 from product p join category c on p.category_id = c.id 
 join supplier s on p.supplier_id = s.id join department d on p.department_id = d.id;
 
