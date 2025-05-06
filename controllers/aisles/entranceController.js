@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Produce = require("../../models/produceModel");
 const Cart = require("../../models/cartModel");
-const db = require('../../config/db.js');// may need to change
+const db = require("../../models/db");// may need to change
 
 exports.entranceGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
