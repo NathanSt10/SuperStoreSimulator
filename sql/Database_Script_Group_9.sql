@@ -495,9 +495,9 @@ select row_number() over (partition by member_id order by id) as member_order_nu
 cost, member_id from orders; 
 
 create view view_orderdetail as
-select row_number() over (partition by o.member_id order by o.id) as member_order_number, p.`name` as product,
-od.price, od.quantity, member_id from orderdetails od join orders o on od.order_id = o.id 
-join product p on od.product_id = p.id;
+select dense_rank() over (partition by member_id order by od.order_id) as member_order_number,
+p.`name` as product, od.quantity, od.price, o.member_id 
+FROM orderdetails od join orders o on od.order_id = o.id join product p on od.product_id = p.id;
 
 create view checkout as
 select member_id, p.`name` as product, bc.product_quantity, (p.price *bc.product_quantity) as price
