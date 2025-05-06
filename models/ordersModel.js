@@ -14,7 +14,6 @@ class Orders {
       `SELECT member_order_number, product, quantity, price FROM view_orderdetail WHERE member_id = ? AND member_order_number = ?`,
       [memberId, orderNumber]
     );
-    console.log(rows);
     return rows;
   }
 }
