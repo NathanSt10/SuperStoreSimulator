@@ -18,8 +18,35 @@
     <div class="content">
       <h1>Checkout</h1>
 
+      <!-- <form  action="/thank" method="GET">
+        <label for="paymentType">Choose Payment Method:</label>
+        <select name="payment_type" id="paymentType" required>
+          <option value="">-- Select --</option>
+          <option value="Card">Card</option>
+          <option value="Check">Check</option>
+          <option value="Cash">Cash</option>
+        </select>
       
-      <a href="/thank"><button class="create-btn" type="submit">PAY</button></a>
+        <br><br>
+      
+        <button id="payButton" class="create-btn" type="submit" disabled>PAY</button>
+      </form> -->
+      
+      <!-- <script>
+        const dropdown = document.getElementById('paymentType');
+        const payButton = document.getElementById('payButton');
+      
+        dropdown.addEventListener('change', function () {
+          if (dropdown.value) {
+            payButton.disabled = false;
+          } else {
+            payButton.disabled = true;
+          }
+        });
+      </script> -->
+      <a href="/thank"><button class="create-btn" type="submit">PAY w/ Card</button></a>
+      <a href="/thank"><button class="create-btn" type="submit">PAY w/ Check</button></a>
+      <a href="/thank"><button class="create-btn" type="submit">PAY w/ Cash</button></a>
 
       <h2>Checkout</h2>
       
@@ -46,7 +73,8 @@
           </tbody>
       </table>
 
-      <a href="/"><button>Go Back</button></a>
+      <button onclick="history.back()">Go Back</button>
+      <!-- <a href="/"><button>Go Back</button></a> -->
     </div>
   </div>
 </body>

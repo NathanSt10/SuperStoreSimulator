@@ -19,7 +19,7 @@
       <h1>THANK YOU</h1>
 
 
-      <h2>THANK YOU</h2>
+      <h2>Receipt</h2>
       
       <table class="retro-table">
         <thead>
@@ -33,7 +33,9 @@
             <% if (thank && thank.length > 0) { %>
               <% thank.forEach(order => { %>
                 <tr>
-                  <td><%= order.price %></td>
+                  <td><%= order.product %></td>
+                  <td><%= order.quantity %></td>
+                  <td>$<%= order.price %></td>
                 </tr>
               <% }); %>
             <% } else { %>
@@ -42,7 +44,7 @@
           </tbody>
       </table>
 
-      <a href="/"><button>Go Back</button></a>
+      <a href="/"><button>Exit Store</button></a>
     </div>
   </div>
 </body>
