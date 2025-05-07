@@ -12,7 +12,6 @@ class Cart {
       'SELECT id FROM aisle_view where `name` = ?',
       [productName]
     );
-    console.log(results);
     return [results];
   }
 
