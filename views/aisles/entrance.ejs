@@ -68,21 +68,12 @@
             <th>Stock</th>
             <th>Brand</th>
             <th>Category</th>
-<<<<<<< HEAD
-            <th>Add</th> <!-- Added for the button column -->
-          </tr>
-        </thead>
-        <tbody>
-          <% if (produce && produce.length > 0) { %>
-            <% produce.forEach(product => { %>
-=======
             <th>Add</th>
           </tr>
         </thead>
         <tbody>
             <% if (produce && produce.length > 0) { %>
               <% produce.forEach(product => { %>
->>>>>>> 1f0cead90d04b3fd44eb62f2d4383609190cbda9
               <tr>
                 <td><%= product.name %></td>
                 <td>$<%= product.price %></td>
@@ -92,19 +83,6 @@
                 <td>
                   <form action="/entrance/add/<%= memberid%>" method="POST" style="margin:0;">
                     <input type="hidden" name="productName" value="<%= product.name %>">
-<<<<<<< HEAD
-                    <button class="create-btn" type="submit">Add</button>
-                  </form>
-                </td>
-              </tr>
-            <% }); %>
-          <% } else { %>
-            <tr>
-              <td colspan="6">No produce available</td>
-            </tr>
-          <% } %>
-        </tbody>
-=======
                     <button class="create-btn" type="submit" style="padding: 2px 6px; font-size: 12px;">+</button>
                   </form>
                 </td>
@@ -114,7 +92,6 @@
               <tr><td colspan="3">No produce available</td></tr>
             <% } %>
           </tbody>
->>>>>>> 1f0cead90d04b3fd44eb62f2d4383609190cbda9
       </table>
     </div>
 
