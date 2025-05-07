@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Super Shopping Simulator</title>
-  <link rel="stylesheet" href="http://localhost:3000/styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Super Shopping Simulator</title>
+    <link rel="stylesheet" href="http://localhost:3000/styles.css">
+  </head>
+  <body>
     <div class="window-big">
       <div class="title-bar-big">
         <span class="title">
@@ -22,43 +22,42 @@
 
       <!-- The Modal -->
       <div id="memberModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-              <span class="close">&times;</span>
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
 
-              <h2>Members</h2>
+          <h2>Members</h2>
 
-              <ul>
-                <% if (members && members.length > 0) { %>                 
-                  <% members.forEach(member => { %>
-                    <li>
-                      <%= member.full_name %>
-                      <%= member.email %>
-                      <%= member.phone_number %>
+          <ul>
+            <% if (members && members.length > 0) { %>                 
+              <% members.forEach(member => { %>
+                <li>
+                  <%= member.full_name %>
+                  <%= member.email %>
+                  <%= member.phone_number %>
 
-                      <!-- Update Form -->
-                      <form action="/office/<%= member.id %>" method="POST" style="display:inline;">
-                        <input type="text" name="email" placeholder="New Email">
-                        <input type="text" name="phone_number" placeholder="New Phone">
-                        <button type="submit">Update</button>
-                      </form>
+                  <!-- Update Form -->
+                  <form action="/office/update/<%= memberid %>" method="POST" style="display:inline;">
+                    <input type="text" name="email" placeholder="New Email">
+                    <input type="text" name="phone_number" placeholder="New Phone">
+                    <button type="submit">Update</button>
+                  </form>
 
                       <!-- Delete Button -->
-                      <form action="/office/delete/<%= member.id %>" method="POST" style="display:inline;">
-                        <button type="submit" onclick="return confirm('Are you sure?')">Delete</button></a>
-                      </form>
-                    </li>
-                  <% }); %>
-                <% } else { %>  
-                  <li>No users found</li>
-                <% } %>
-              </ul>
-
-          </div>
+                  <form action="/office/delete/<%= memberid%>" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Are you sure?')">Delete</button></a>
+                  </form>
+                </li>
+              <% }); %>
+            <% } else { %>  
+              <li>No users found</li>
+            <% } %>
+          </ul>
+        </div>
       </div>
 
-      <a href="/<%= memberid%>"><button type="submit">Go Back</button></a>
+      <a href="/entrance/<%= memberid%>"><button type="submit">Go Back</button></a>
     </div>
     <script src="modal.js" defer></script>
-</body>
+  </body>
 </html>
