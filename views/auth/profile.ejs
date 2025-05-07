@@ -3,9 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>member Profile - Super App</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <%= member.first_name %>
+    <div class="window">
+        <div class="title-bar">
+            <span class="title">
+              <span class="s">S</span><span class="u">u</span><span class="p">p</span><span class="e">e</span><span class="r">r</span>
+              <span class="s">S</span><span class="u">h</span><span class="p">o</span><span class="e">p</span><span class="r">p</span><span class="s">i</span><span class="u">n</span><span class="p">g</span>
+              <span class="s">S</span><span class="u">i</span><span class="p">m</span><span class="e">u</span><span class="r">l</span><span class="s">a</span><span class="u">t</span><span class="p">o</span><span class="e">r</span>
+            </span>
+            <div class="icon-button-group">
+              <a href="/profile/<%= memberid%>">
+                <button class="icon-button">
+                  <img src="/human_white.png" alt="Account" style="width: 25px; height: 25px;">
+              </button>
+              </a>
+            </div>
+          </div>
+        <div class="content">
+            <div style="display: flex; align-items: flex-start;">
+                <!-- Profile Picture Placeholder -->
+                <div style="width: 100px; height: 100px; background-color: #dcdcdc; border: 2px inset #000; margin-right: 30px; display: flex; justify-content: center; align-items: center;">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="5"></circle>
+                        <path d="M3 21v-2a7 7 0 0 1 14 0v2"></path>
+                    </svg>
+                </div>
+                
+                <!-- member Information -->
+                <div style="flex-grow: 1;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <h1 style="margin: 0; margin-right: 15px;">
+                            <%= member.first_name %> <%= member.last_name %>
+                        </h1>
+                        <div style="background-color: #f0f0f0; border: 2px inset #000; padding: 5px 10px; font-weight: bold;">
+                            <%= member.points %> Points
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <form action="/profile/<%= memberid %>" method="POST">
+                        <label style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <span>Email: <%= member.email %></span>
+                            <div style="display: flex; align-items: center; width: 60%;">
+                                <input type="text" placeholder="New Email" name="email" style="margin-right: 10px; flex-grow: 1;">
+                                <button class="retro-btn">Edit</button>
+                            </div>
+                        </label>
+                        
+                        <label style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <span>Phone: <%= member.phone_number %></span>
+                            <div style="display: flex; align-items: center; width: 60%;">
+                                <input type="text" placeholder="Edit Phone Number" name="phone_number" style="margin-right: 10px; flex-grow: 1;">
+                                <button class="retro-btn">Edit</button>
+                            </div>
+                        </label>
+                        
+                        <label style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <span>Password: </span>
+                            <div style="display: flex; align-items: center; width: 60%;">
+                                <input type="password" placeholder="*********" style="margin-right: 10px; flex-grow: 1;">
+                                <button class="retro-btn">Edit</button>
+                            </div>
+                        </label>
+                        </form>
+                    </div>
+                    
+                    <h2 style="margin-top: 30px; margin-bottom: 15px; color: black;">Prev Orders:</h2>
+                    <div style="display: flex; gap: 15px;">
+                        <% if (orders && orders.length > 0) { %>
+                            <% orders.forEach((order) => { %>
+                                <div onclick="openOrderModal('<%= order.member_order_number %>',  '<%= memberid %>')" style="width: 80px; height: 80px; background-color: #dcdcdc; border: 2px outset #000; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; color: navy;">
+                                    #<%= order.member_order_number %>
+                                </div>
+                            <% }); %>
+                          <% } else { %>
+                            <div>No Orders</div>
+                          <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2>Order Details</h2>
+            <div id="orderDetails">
+                <!-- Order details will be populated here -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        async function openOrderModal(orderNumber, memberId) {
+            const modal = document.getElementById("orderModal");
+            const orderDetails = document.getElementById("orderDetails");
+
+            // Show loading
+            orderDetails.innerHTML = "<p>Loading order details...</p>";
+
+            try {
+                // Fetch details
+                const response = await fetch(`/profile/${memberId}/orders/${orderNumber}/details`);
+                const orderItems = await response.json(); // Wait for the response to be converted to JSON
+
+                let totalPrice = 0;
+                orderItems.forEach(item => {
+                    totalPrice += parseFloat(item.price) * parseInt(item.quantity, 10);
+                });
+
+                // Check if orderItems has data
+                if (!orderItems || orderItems.length === 0) {
+                    orderDetails.innerHTML = "<p>No details found for this order.</p>";
+                    return;
+                }
+
+                // Generate HTML table for the order details
+                let html = `
+                    <div style="background-color: #dcdcdc; padding: 10px; border: 2px inset #000; margin-bottom: 15px;">
+                        <p><strong>Order #${orderNumber}</strong></p>
+                        <p><strong>Total: $${totalPrice.toFixed(2)}</strong></p>
+                    </div>
+                    <table class="retro-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                // Iterate over the orderItems array and add them to the table
+                orderItems.forEach(item => {
+                    html += `
+                        <tr>
+                            <td>${item.product}</td>
+                            <td>${item.quantity}</td>
+                            <td>$${parseFloat(item.price).toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+
+                html += `
+                        </tbody>
+                    </table>
+                `;
+
+                // Inject the generated HTML into the modal
+                orderDetails.innerHTML = html;
+
+            } catch (err) {
+                console.error(err);
+                orderDetails.innerHTML = "<p>Error loading order details.</p>";
+            }
+
+            // Show the modal
+            modal.classList.add("show");
+        }
+
+
+        function closeOrderModal() {
+            const modal = document.getElementById("orderModal");
+            modal.classList.remove("show");
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("orderModal");
+            if (event.target === modal) {
+                closeOrderModal();
+            }
+        }
+
+    </script>
 </body>
 </html>

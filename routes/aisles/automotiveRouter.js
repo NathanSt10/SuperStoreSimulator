@@ -4,5 +4,6 @@ const automotiveController = require("../../controllers/aisles/automotiveControl
 const automotiveRouter = Router();
 
 automotiveRouter.get("/:id", automotiveController.automotiveGet);
+automotiveRouter.post("/add/:id", automotiveController.addItem);
 
 module.exports = automotiveRouter;

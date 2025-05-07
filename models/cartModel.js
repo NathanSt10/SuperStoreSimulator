@@ -1,18 +1,23 @@
 const db = require("./db");
 
 class Cart {
-  static async findAll() {
-    const [rows] = await db.query("select product, product_quantity from view_bag where member_id = 1");
-    return rows;
+  static async findAll(memberId) {
+    const query = "select product, product_quantity from view_bag where member_id = ?";
+    const [result] = await db.query(query, [memberId]);
+    return result;
   }
-//  const query = "CALL new_member_user (INSERT INTO member (first_name, last_name, email, phone_number, membership) VALUES (?, ?, ?, ?, ?)";
 
-static async addToCart(memberId, productId, quantity) {
-  const query = "CALL add_to_bag(?, ?, ?)";
-  const [result] = await db.query(query, [memberId, productId, quantity]);
-  console.log(result);
-  return result;
-}
+  static async findProduct(productName) {
+    const [results] = await db.query(
+      'SELECT id FROM aisle_view where `name` = ?',
+      [productName]
+    );
+    return [results];
+  }
+
+  static async addToCart(memberId, productId, quantity) {
+    await db.query('CALL add_to_bag(?, ?, ?)', [memberId, productId, quantity]);
+  }
 
 }
 

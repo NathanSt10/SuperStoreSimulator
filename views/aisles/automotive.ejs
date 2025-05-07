@@ -33,17 +33,16 @@
 
             <h2>Cart</h2>
 
-            <ul>
+            <ul class="cart-list">
               <% if (cart && cart.length > 0) { %>                 
                 <% cart.forEach(item => { %>
-                  <li>
-                    <%= item.product %>
-                    <%= item.product_quantity %>
-
+                  <li class="cart-item">
+                    <span class="item-name"><%= item.product %></span>
+                    <span class="item-qty">Qty: <%= item.product_quantity %></span>
                   </li>
                 <% }); %>
               <% } else { %>  
-                <li>No users found</li>
+                <li>No items found</li>
               <% } %>
             </ul>
 
@@ -53,11 +52,11 @@
     <div class="content">
       
       <a href="/beauty/<%= memberid%>"><button class="create-btn" type="submit">Beauty</button></a>
-      <a href="/checkout"><button class="create-btn" type="submit">Proceed to Checkout</button></a>
+      <a href="/checkout/<%= memberid%>"><button class="create-btn" type="submit">Proceed to Checkout</button></a>
       
 
       <h2>Automotive</h2>
-      
+      <div class="table-container">
       <table class="retro-table">
         <thead>
           <tr>
@@ -66,6 +65,7 @@
             <th>Stock</th>
             <th>Brand</th>
             <th>Category</th>
+            <th>Add</th>
           </tr>
         </thead>
         <tbody>
@@ -77,6 +77,12 @@
                   <td><%= product.quantity %></td>
                   <td><%= product.brand %></td>
                   <td><%= product.category %></td>
+                  <td>
+                    <form action="/automotive/add/<%= memberid%>" method="POST" style="margin:0;">
+                      <input type="hidden" name="productName" value="<%= product.name %>">
+                      <button class="create-btn" type="submit" style="padding: 2px 6px; font-size: 12px;">+</button>
+                    </form>
+                  </td>
                 </tr>
               <% }); %>
             <% } else { %>
@@ -84,6 +90,7 @@
             <% } %>
           </tbody>
       </table>
+    </div>
       <a href="/toys/<%= memberid%>"><button>Toys</button></a>
     </div>
   </div>

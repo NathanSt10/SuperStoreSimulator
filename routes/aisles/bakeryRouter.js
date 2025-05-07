@@ -4,5 +4,6 @@ const bakeryController = require("../../controllers/aisles/bakeryController");
 const bakeryRouter = Router();
 
 bakeryRouter.get("/:id", bakeryController.bakeryGet);
+bakeryRouter.post("/add/:id", bakeryController.addItem);
 
 module.exports = bakeryRouter;

@@ -3,6 +3,6 @@ const thankController = require("../../controllers/checkout/thankController");
 
 const thankRouter = Router();
 
-thankRouter.get("/", thankController.thankGet);
+thankRouter.post("/:id", thankController.thankGet);
 
 module.exports = thankRouter;

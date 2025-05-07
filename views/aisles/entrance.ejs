@@ -33,13 +33,12 @@
 
             <h2>Cart</h2>
 
-            <ul>
+            <ul class="cart-list">
               <% if (cart && cart.length > 0) { %>                 
                 <% cart.forEach(item => { %>
-                  <li>
-                    <%= item.product %>
-                    <%= item.product_quantity %>
-
+                  <li class="cart-item">
+                    <span class="item-name"><%= item.product %></span>
+                    <span class="item-qty">Qty: <%= item.product_quantity %></span>
                   </li>
                 <% }); %>
               <% } else { %>  
@@ -54,12 +53,13 @@
       <h1>WELCOME TO THE SUPERMARKET</h1>
 
       
-      <a href="/checkout"><button class="create-btn" type="submit">Proceed to Checkout</button></a>
-      <a href="/office"><button class="create-btn" type="submit">Go to Office</button></a>
+      <a href="/checkout/<%= memberid%>"><button class="create-btn" type="submit">Proceed to Checkout</button></a>
+      <a href="/office/<%= memberid%>"><button class="create-btn" type="submit">Go to Office</button></a>
       <a href="/bakery/<%= memberid%>"><button class="create-btn">Bakery</button></a>
 
       <h2>Produce Aisle</h2>
       
+      <div class="table-container">
       <table class="retro-table">
         <thead>
           <tr>
@@ -68,12 +68,21 @@
             <th>Stock</th>
             <th>Brand</th>
             <th>Category</th>
+<<<<<<< HEAD
             <th>Add</th> <!-- Added for the button column -->
           </tr>
         </thead>
         <tbody>
           <% if (produce && produce.length > 0) { %>
             <% produce.forEach(product => { %>
+=======
+            <th>Add</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% if (produce && produce.length > 0) { %>
+              <% produce.forEach(product => { %>
+>>>>>>> 1f0cead90d04b3fd44eb62f2d4383609190cbda9
               <tr>
                 <td><%= product.name %></td>
                 <td>$<%= product.price %></td>
@@ -83,6 +92,7 @@
                 <td>
                   <form action="/entrance/add/<%= memberid%>" method="POST" style="margin:0;">
                     <input type="hidden" name="productName" value="<%= product.name %>">
+<<<<<<< HEAD
                     <button class="create-btn" type="submit">Add</button>
                   </form>
                 </td>
@@ -94,7 +104,19 @@
             </tr>
           <% } %>
         </tbody>
+=======
+                    <button class="create-btn" type="submit" style="padding: 2px 6px; font-size: 12px;">+</button>
+                  </form>
+                </td>
+              </tr>
+              <% }); %>
+            <% } else { %>
+              <tr><td colspan="3">No produce available</td></tr>
+            <% } %>
+          </tbody>
+>>>>>>> 1f0cead90d04b3fd44eb62f2d4383609190cbda9
       </table>
+    </div>
 
       <a href="/"><button>Go Back</button></a>
     </div>
