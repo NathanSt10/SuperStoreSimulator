@@ -39,6 +39,10 @@
                   <li class="cart-item">
                     <span class="item-name"><%= item.product %></span>
                     <span class="item-qty">Qty: <%= item.product_quantity %></span>
+                    <form action="/entrance/remove/<%= memberid%>" method="POST" style="margin: 0; margin-left: 50px;">
+                      <input type="hidden" name="productName" value="<%= item.name %>">
+                      <button class="create-btn remove" type="submit" style="padding: 2px 6px; font-size: 12px;">-</button>
+                    </form>
                   </li>
                 <% }); %>
               <% } else { %>  
