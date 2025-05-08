@@ -10,6 +10,7 @@ class Checkout {
   static async isAdmin(memberId) {
     const query = "select admin_rights from users where member_id = ?";
     const [result] = await db.query(query, memberId);
+    // console.log("isAdmin: ", result);
     return result;
   }
 }

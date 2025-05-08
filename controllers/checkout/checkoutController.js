@@ -5,11 +5,10 @@ exports.checkoutGet = asyncHandler(async (req, res) => {
     const memberid = req.params.id;
     const checkout = await Checkout.findAll(memberid);
     const [isAdmin] = await Checkout.isAdmin(memberid);
-    console.log("isAdmin: ", isAdmin);
     res.render("checkout/checkout", {
       title: "SuperStore",
       checkout: checkout,
       memberid: memberid,
-      isAdmin: isAdmin,
+      isAdmin: isAdmin.admin_rights,
     });
   });
