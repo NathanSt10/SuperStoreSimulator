@@ -6,8 +6,12 @@ class Checkout {
     const [result] = await db.query(query, memberId)
     return result;
   }
-//  const query = "CALL new_member_user (INSERT INTO member (first_name, last_name, email, phone_number, membership) VALUES (?, ?, ?, ?, ?)";
 
+  static async isAdmin(memberId) {
+    const query = "select admin_rights from users where member_id = ?";
+    const [result] = await db.query(query, memberId);
+    return result;
+  }
 }
 
 module.exports = Checkout;
