@@ -5,5 +5,6 @@ const cleaningRouter = Router();
 
 cleaningRouter.get("/:id", cleaningController.cleaningGet);
 cleaningRouter.post("/add/:id", cleaningController.addItem);
+cleaningRouter.post("/remove/:id", cleaningController.removeItem);
 
 module.exports = cleaningRouter;

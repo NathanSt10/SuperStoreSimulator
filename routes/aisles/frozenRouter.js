@@ -5,5 +5,6 @@ const frozenRouter = Router();
 
 frozenRouter.get("/:id", frozenController.frozenGet);
 frozenRouter.post("/add/:id", frozenController.addItem);
+frozenRouter.post("/remove/:id", frozenController.removeItem);
 
 module.exports = frozenRouter;
