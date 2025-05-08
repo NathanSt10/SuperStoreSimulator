@@ -18,6 +18,10 @@
       <div class="windowGreen">
           <!-- Trigger/Open The Modal -->
           <button id="memberButton">Members</button>
+          <button id="restockButton">Restock</button>
+          <button id="hireButton">Hire Employee</button>
+          <button id="onboardingButton">Onboarding</button>
+          <button id="fireButton">Fire Employee</button>
       </div>
 
       <!-- The Modal -->
@@ -43,7 +47,7 @@
                     <button type="submit">Update</button>
                   </form>
 
-                      <!-- Delete Button -->
+                  <!-- Delete Button -->
                   <form action="/office/delete/<%= memberid%>" method="POST" style="display:inline;">
                     <button type="submit" onclick="return confirm('Are you sure?')">Delete</button></a>
                   </form>

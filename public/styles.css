@@ -145,6 +145,12 @@ button:hover {
     background-attachment: fixed;
     background-size: cover;
     height: 600px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
   }
 
   /* The Modal (background) */
