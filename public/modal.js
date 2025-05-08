@@ -1,6 +1,4 @@
 window.onload = function () {
-    console.log('modal.js loaded!');
-  
     var modal = document.getElementById("memberModal");
     var btn = document.getElementById("memberButton");
     var span = document.getElementsByClassName("close")[0];
