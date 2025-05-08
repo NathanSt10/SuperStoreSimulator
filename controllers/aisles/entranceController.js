@@ -26,7 +26,7 @@ exports.addItem = asyncHandler(async (req, res) => {
   const productId = results[0].id;
 
   // 2. Now call the stored procedure with the valid productId
-  await Cart.addToCart(memberId, productId, quantity)
+  await Cart.addToCart(memberId, productId, quantity);
 
   res.redirect(`/entrance/${memberId}`);
 });

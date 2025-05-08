@@ -46,13 +46,13 @@
       </script> -->
       <div class="payment-buttons">
         <form action="/thank/<%= memberid%>" method="POST">
-          <button class="create-btn" type="submit">PAY w/ Card</button>
+          <button class="create-btn" type="submit" name="payment_type" value="Card">PAY w/ Card</button>
         </form>
         <form action="/thank/<%= memberid%>" method="POST">
-          <button class="create-btn" type="submit">PAY w/ Check</button>
+          <button class="create-btn" type="submit" name="payment_type" value="Check">PAY w/ Check</button>
         </form>
         <form action="/thank/<%= memberid%>" method="POST">
-          <button class="create-btn" type="submit">PAY w/ Cash</button>
+          <button class="create-btn" type="submit" name="payment_type"value="Cash">PAY w/ Cash</button>
         </form>
       </div>
 
