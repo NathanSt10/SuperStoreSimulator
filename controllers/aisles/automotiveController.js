@@ -6,11 +6,13 @@ exports.automotiveGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
   const automotive = await Automotive.findAll();
   const cart = await Cart.findAll(memberid);
+  const [totalItems] = await Cart.totalItems(memberid);
   res.render("aisles/automotive", {
     title: "SuperStore",
     automotive: automotive,
     cart: cart,
     memberid: memberid,
+    totalItems: totalItems.total
   });
 });
 

@@ -6,11 +6,13 @@ exports.frozenGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
   const frozen = await Frozen.findAll();
   const cart = await Cart.findAll(memberid);
+  const [totalItems] = await Cart.totalItems(memberid);
   res.render("aisles/frozen", {
     title: "SuperStore",
     frozen: frozen,
     cart: cart,
     memberid: memberid,
+    totalItems: totalItems.total
   });
 });
 

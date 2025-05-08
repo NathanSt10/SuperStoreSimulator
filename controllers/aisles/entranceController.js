@@ -6,11 +6,13 @@ exports.entranceGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
   const produce = await Produce.findAll();
   const cart = await Cart.findAll(memberid);
+  const [totalItems] = await Cart.totalItems(memberid);
   res.render("aisles/entrance", {
     title: "SuperStore",
     produce: produce,
     cart: cart,
     memberid: memberid,
+    totalItems: totalItems.total
   });
 });
 
