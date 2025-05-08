@@ -25,6 +25,12 @@ class Cart {
     return results;
   }
 
+  static async totalItems(memberId){
+    const query = "select sum(product_quantity) as total from bagcontents where member_id = ?"
+    const [results] = await db.query(query, [memberId]);
+    return results;
+  }
+
 }
 
 module.exports = Cart;

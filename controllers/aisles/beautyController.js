@@ -6,11 +6,13 @@ exports.beautyGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
   const beauty = await Beauty.findAll();
   const cart = await Cart.findAll(memberid);
+  const [totalItems] = await Cart.totalItems(memberid);
   res.render("aisles/beauty", {
     title: "SuperStore",
     beauty: beauty,
     cart: cart,
     memberid: memberid,
+    totalItems: totalItems.total
   });
 });
 

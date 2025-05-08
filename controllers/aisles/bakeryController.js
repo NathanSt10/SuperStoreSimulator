@@ -6,11 +6,13 @@ exports.bakeryGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
   const bakery = await Bakery.findAll();
   const cart = await Cart.findAll(memberid);
+  const [totalItems] = await Cart.totalItems(memberid);
   res.render("aisles/bakery", {
     title: "SuperStore",
     bakery: bakery,
     cart: cart,
     memberid: memberid,
+    totalItems: totalItems.total
   });
 });
 

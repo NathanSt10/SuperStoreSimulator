@@ -14,8 +14,11 @@
         <span class="s">S</span><span class="u">i</span><span class="p">m</span><span class="e">u</span><span class="r">l</span><span class="s">a</span><span class="u">t</span><span class="p">o</span><span class="e">r</span>
       </span>
       <div class="icon-button-group">
-        <button id="memberButton" class="icon-button">
+        <button id="memberButton" class="icon-button" style="position: relative;">
           <img src="/cart_white.png" alt="Cart" style="width: 25px; height: 25px;">
+          <% if (totalItems > 0) { %>
+            <span class="cart-count-retro"><%= totalItems %></span>
+          <% } %>
         </button>
         <a href="/profile/<%= memberid%>">  
           <button class="icon-button">

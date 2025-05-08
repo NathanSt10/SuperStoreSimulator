@@ -6,11 +6,13 @@ exports.toysGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
   const toys = await Toys.findAll();
   const cart = await Cart.findAll(memberid);
+  const [totalItems] = await Cart.totalItems(memberid);
   res.render("aisles/toys", {
     title: "SuperStore",
     toys: toys,
     cart: cart,
     memberid: memberid,
+    totalItems: totalItems.total
   });
 });
 
