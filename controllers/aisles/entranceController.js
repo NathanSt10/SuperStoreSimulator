@@ -33,5 +33,9 @@ exports.addItem = asyncHandler(async (req, res) => {
 
 exports.removeItem = asyncHandler(async (req, res) => {
   const memberId = req.params.id;
+  const productName = req.body.productName;
+  const [results] = await Cart.findProduct(productName);
+  const productId = results[0].id;
+  await Cart.removeFromCart(memberId, productId);
   res.redirect(`/entrance/${memberId}`);
 });
