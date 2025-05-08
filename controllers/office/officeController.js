@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Member = require("../../models/membersModel");
+const Product = require("../../models/officeModel");
 
 exports.officeWelcomeGet = asyncHandler(async (req, res) => {
   const memberid = req.params.id;
@@ -33,3 +34,9 @@ exports.officeDelete = asyncHandler(async (req, res) => {
   await Member.deleteMember(id);
   res.redirect("/office/:id");
 });
+
+exports.restock = asyncHandler(async (req, res) => {
+  const quantity = req.body.quantity;
+  await Product.restock(quantity);
+  res.redirect("/office/:id");
+})
