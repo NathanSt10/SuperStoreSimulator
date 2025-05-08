@@ -19,6 +19,11 @@ class Cart {
     await db.query('CALL add_to_bag(?, ?, ?)', [memberId, productId, quantity]);
   }
 
+  static async removeFromCart(memberId, productId){
+    const query = "delete from bagcontents where member_id = ? and product_id = ?"
+    const [results] = await db.query(query, [memberId, productid]);
+  }
+
 }
 
 module.exports = Cart;
