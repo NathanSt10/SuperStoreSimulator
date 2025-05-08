@@ -424,3 +424,17 @@ button:hover {
   margin: 0; /* remove default margin */
 }
 
+.remove {
+  background-color: #ff0000; /* bright red */
+  color: white;
+  border-color: #000;
+}
+
+.remove:hover {
+  filter: brightness(1.1);
+}
+
+.remove:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
