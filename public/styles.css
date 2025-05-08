@@ -438,3 +438,8 @@ button:hover {
   transform: translate(1px, 1px);
   box-shadow: none;
 }
+
+.create-btn.remove {
+  background-color: red;
+  color: white;
+}
