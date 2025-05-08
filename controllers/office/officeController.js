@@ -14,9 +14,9 @@ exports.officeWelcomeGet = asyncHandler(async (req, res) => {
 
 
 exports.officeUpdate = asyncHandler(async (req, res) => {
-  const { id } = req.params;
+  const { id, updateid } = req.params;
   let { email, phone_number } = req.body;
-  const [[member]] = await Member.getMember(id);
+  const [[member]] = await Member.getMember(updateid);
   if(email == "") {
     email = member.email
   }
@@ -24,19 +24,20 @@ exports.officeUpdate = asyncHandler(async (req, res) => {
   if(phone_number == "") {
     phone_number = member.phone_number
   }
-  await Member.updateMember(id, email, phone_number);
+  await Member.updateMember(updateid, email, phone_number);
   const members = await Member.findAll();
-  res.redirect("/office/:id");
+  res.redirect(`/office/${id}`);
 });
 
 exports.officeDelete = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  await Member.deleteMember(id);
-  res.redirect("/office/:id");
+  const { id, updateid } = req.params;
+  await Member.deleteMember(updateid);
+  res.redirect(`/office/${id}`);
 });
 
 exports.restock = asyncHandler(async (req, res) => {
+  const { id } = req.params;
   const quantity = req.body.quantity;
   await Product.restock(quantity);
-  res.redirect("/office/:id");
+  res.redirect(`/office/${id}`);
 })

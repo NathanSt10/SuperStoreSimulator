@@ -130,14 +130,14 @@
                   <%= member.phone_number %>
 
                   <!-- Update Form -->
-                  <form action="/office/<%= memberid%>/update" method="POST" style="display:inline;">
+                  <form action="/office/<%= memberid %>/update/<%= member.id %>" method="POST" style="display:inline;">
                     <input type="text" name="email" placeholder="New Email">
                     <input type="text" name="phone_number" placeholder="New Phone">
                     <button type="submit">Update</button>
                   </form>
 
                   <!-- Delete Button -->
-                  <form action="/office/delete/<%= memberid%>" method="POST" style="display:inline;">
+                  <form action="/office/<%= memberid %>/delete/<%= member.id%>" method="POST" style="display:inline;">
                     <button type="submit" onclick="return confirm('Are you sure?')">Delete</button></a>
                   </form>
                 </li>
@@ -153,7 +153,7 @@
         <div class="modal-content">
           <span class="close">&times;</span>
             <form action="office/restock/<%= memberid%>" method="POST" style="display:inline;">
-              <input type="text" name="restock" placeholder="24">
+              <input type="text" name="quantity" placeholder="24">
               <button type="submit">Stock All</button>
             </form>
         </div>
