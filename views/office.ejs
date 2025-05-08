@@ -4,6 +4,76 @@
     <meta charset="UTF-8">
     <title>Super Shopping Simulator</title>
     <link rel="stylesheet" href="http://localhost:3000/styles.css">
+    <style>
+      /* Desktop icon styling */
+      .desktop-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 130px;
+        height: 140px;
+        margin: 10px;
+        cursor: pointer;
+        text-align: center;
+        color: white;
+        text-shadow: 1px 1px 1px #000;
+      }
+      
+      .icon-img {
+        width: 512px;
+        height: 512px;
+        background-color: transparent;
+        margin-bottom: 5px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      
+      .icon-text {
+        font-size: 20px;
+        font-weight: normal;
+        background-color: transparent;
+        padding: 2px;
+      }
+      
+      .desktop-icon.selected .icon-text {
+        background-color: #000080;
+      }
+      
+      .desktop-icon:hover .icon-text {
+        background-color: #0000aa;
+      }
+      
+      /* Member icon */
+      .members-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23c3c3c3'/%3E%3Cpath d='M24 10c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 16c-8 0-12 4-12 4v6h24v-6s-4-4-12-4z' fill='%23000080'/%3E%3Cpath d='M10 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 10c-5.3 0-8 2.7-8 2.7V24h8v-2c0-1.3.7-2.7 2-4-1-.3-1.3-.7-2-.7zm28 0c-.7 0-1 .3-2 .7 1.3 1.3 2 2.7 2 4v2h8v-3.3S43.3 18 38 18z' fill='%23000080'/%3E%3Cpath d='M38 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z' fill='%23000080'/%3E%3C/svg%3E");
+      }
+      
+      /* Restock icon */
+      .restock-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23c3c3c3'/%3E%3Cpath d='M10 12h28v6H10z' fill='%23fff'/%3E%3Cpath d='M10 12v6h28v-6H10zm2 2h24v2H12v-2z' fill='%23000080'/%3E%3Cpath d='M8 8v32h32V8H8zm2 2h28v28H10V10z' fill='%23000080'/%3E%3Cpath d='M14 22h20v16H14z' fill='%23000080'/%3E%3Cpath d='M20 22v8h8v-8h-8zm2 2h4v4h-4v-4z' fill='%23fff'/%3E%3C/svg%3E");
+      }
+      
+      /* Hire icon */
+      .hire-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23c3c3c3'/%3E%3Cpath d='M24 8c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 16c-8 0-12 4-12 4v12h24V28s-4-4-12-4z' fill='%23008000'/%3E%3Cpath d='M38 22h-6v4h4v4h-4v4h6v-12z' fill='%23008000'/%3E%3Cpath d='M36 20l6 6-6 6' stroke='%23008000' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+      }
+      
+      /* Onboarding icon */
+      .onboarding-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23c3c3c3'/%3E%3Cpath d='M10 8v32h28V8H10zm2 2h24v4H12v-4zm0 6h24v22H12V16z' fill='%23000080'/%3E%3Cpath d='M16 20v2h16v-2H16zm0 6v2h16v-2H16zm0 6v2h16v-2H16z' fill='%23000080'/%3E%3Cpath d='M38 22l-6 6-3-3-2 2 5 5 8-8-2-2z' fill='%23008000'/%3E%3C/svg%3E");
+      }
+      
+      /* Fire icon */
+      .fire-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23c3c3c3'/%3E%3Cpath d='M24 8c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 16c-8 0-12 4-12 4v12h24V28s-4-4-12-4z' fill='%23800000'/%3E%3Cpath d='M38 22h-6v4h4v4h-4v4h6v-12z' fill='%23800000'/%3E%3Cpath d='M36 24l-12 12M24 24l12 12' stroke='%23800000' stroke-width='3'/%3E%3C/svg%3E");
+      }
+      
+      /* Checkout icon */
+      .checkout-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23c3c3c3'/%3E%3Cpath d='M14 10l-6 6v22h32V10H14zm0 2h24v24H10V17l4-4v-1z' fill='%23008080'/%3E%3Cpath d='M16 22a4 4 0 100 8 4 4 0 000-8zm16 0a4 4 0 100 8 4 4 0 000-8z' fill='%23008080'/%3E%3Cpath d='M16 24a2 2 0 100 4 2 2 0 000-4zm16 0a2 2 0 100 4 2 2 0 000-4z' fill='%23ffffff'/%3E%3Cpath d='M16 32v2h16v-2z' fill='%23008080'/%3E%3Cpath d='M20 18h8v4h-8z' fill='%23008080'/%3E%3C/svg%3E");
+      }
+    </style>
   </head>
   <body>
     <div class="window-big">
@@ -16,10 +86,33 @@
       </div>
       <h1>OFFICE</h1>
       <div class="windowGreen">
-          <!-- Trigger/Open The Modal -->
-          <button id="memberButton">Members</button>
-      </div>
-
+        <!-- Windows 95 style desktop icons -->
+        <div class="desktop-icon" id="memberButton">
+          <div class="icon-img members-icon"></div>
+          <div class="icon-text">View Members</div>
+        </div>
+        
+        <div class="desktop-icon" id="restockButton">
+          <div class="icon-img restock-icon"></div>
+          <div class="icon-text">Restock</div>
+        </div>
+        
+        <div class="desktop-icon" id="hireButton">
+          <div class="icon-img hire-icon"></div>
+          <div class="icon-text">Hire Employee</div>
+        </div>
+        
+        <div class="desktop-icon" id="onboardingButton">
+          <div class="icon-img onboarding-icon"></div>
+          <div class="icon-text">Onboarding</div>
+        </div>
+        
+        <div class="desktop-icon" id="fireButton">
+          <div class="icon-img fire-icon"></div>
+          <div class="icon-text">Fire Employee</div>
+        </div>
+    </div>
+      
       <!-- The Modal -->
       <div id="memberModal" class="modal">
         <!-- Modal content -->
@@ -43,7 +136,7 @@
                     <button type="submit">Update</button>
                   </form>
 
-                      <!-- Delete Button -->
+                  <!-- Delete Button -->
                   <form action="/office/delete/<%= memberid%>" method="POST" style="display:inline;">
                     <button type="submit" onclick="return confirm('Are you sure?')">Delete</button></a>
                   </form>
@@ -53,6 +146,16 @@
               <li>No users found</li>
             <% } %>
           </ul>
+        </div>
+      </div>
+
+      <div id="restockModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+            <form action="office/restock/<%= memberid%>" method="POST" style="display:inline;">
+              <input type="text" name="restock" placeholder="24">
+              <button type="submit">Stock All</button>
+            </form>
         </div>
       </div>
 
