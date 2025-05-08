@@ -21,7 +21,8 @@ class Cart {
 
   static async removeFromCart(memberId, productId){
     const query = "delete from bagcontents where member_id = ? and product_id = ?"
-    const [results] = await db.query(query, [memberId, productid]);
+    const [results] = await db.query(query, [memberId, productId]);
+    return results;
   }
 
 }
