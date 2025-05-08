@@ -130,7 +130,7 @@
                   <%= member.phone_number %>
 
                   <!-- Update Form -->
-                  <form action="/office/update/<%= memberid %>" method="POST" style="display:inline;">
+                  <form action="/office/<%= memberid%>/update" method="POST" style="display:inline;">
                     <input type="text" name="email" placeholder="New Email">
                     <input type="text" name="phone_number" placeholder="New Phone">
                     <button type="submit">Update</button>
@@ -159,7 +159,9 @@
         </div>
       </div>
 
-      <a href="/checkout/<%= memberid%>"><button type="submit">Go to Checkout</button></a>
+      <div class="fixed-footer">
+        <a href="/checkout/<%= memberid%>"><button type="submit">Go to Checkout</button></a>
+      </div>
     </div>
     <script src="/modal.js" defer></script>
   </body>

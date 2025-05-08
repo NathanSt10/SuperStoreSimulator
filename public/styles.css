@@ -465,3 +465,70 @@ button:hover {
   border-radius: 2px;
   box-shadow: 2px 2px 0 #000;
 }
+
+.fixed-footer {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 999; /* Make sure it’s above content */
+}
+
+.receipt-header, .receipt-thankyou {
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+}
+
+.receipt-thankyou {
+  font-weight: bold;
+}
+
+.receipt-body {
+  font-family: 'Courier New', monospace;
+  background-color: #fff;
+  padding: 10px;
+  border: 2px inset #000;
+}
+
+.receipt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.receipt-table th, .receipt-table td {
+  border-bottom: 1px dashed #000;
+  padding: 4px;
+}
+
+.receipt-table th {
+  font-weight: bold;
+  text-align: left;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.receipt-total {
+  font-family: 'Courier New', monospace;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.receipt-scroll {
+  max-height: 200px; /* adjust height as needed */
+  overflow-y: auto;
+  border: 1px solid #000;
+  margin-bottom: 10px;
+}

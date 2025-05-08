@@ -16,27 +16,26 @@
     </div>
     
     <div class="content">
-      <h1>THANK YOU</h1>
-
-
-      <h2>Receipt</h2>
-      
-      <div class="table-container">
-      <table class="retro-table">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
+      <pre class="receipt-header">       SUPER SHOPPING SIMULATOR</pre>
+      <pre class="receipt-thankyou">               THANK YOU</pre>
+    
+      <div class="receipt-body">
+        <div class="receipt-scroll">
+          <table class="receipt-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Qty</th>
+              <th class="right-align">Price</th>
+            </tr>
+          </thead>
+          <tbody>
             <% if (thank && thank.length > 0) { %>
               <% thank.forEach(order => { %>
                 <tr>
                   <td><%= order.product %></td>
                   <td><%= order.quantity %></td>
-                  <td>$<%= order.price %></td>
+                  <td class="right-align">$<%= order.price %></td>
                 </tr>
               <% }); %>
             <% } else { %>
@@ -44,11 +43,17 @@
             <% } %>
           </tbody>
         </table>
-        </div>
-        <h3>Total: $<%=total%></h3>
-
-      <a href="/"><button>Exit Store</button></a>
+      </div>
     </div>
-  </div>
+    
+      <div class="receipt-total">
+        ----------------------------------------
+        <div class="total-line">Total: <span class="right-align">$<%= total %></span></div>
+      </div>
+    
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="/"><button>Exit Store</button></a>
+      </div>
+    </div>    
 </body>
 </html>
